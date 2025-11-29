@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Hamburger</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <button class="menu-btn" id="menuBtn">☰</button>
+        <div class="logo">
+            <div><img src="binh-chung/logo.png" alt="80nam" class="logo-80"></div>
+        </div>
+        <button class="user-btn"></button>
+    </header>
+
+    <!-- Overlay -->
+    <div id="overlay"></div>
+
+    <!-- Sidebar Menu -->
+    <nav id="sidebar">
+        <div class="menu-header">
+            <div class="menu-logo">GROUP</div>
+            <button class="close-btn" id="closeBtn">✕</button>
+        </div>
+
+        
+        <ul class="menu-items">
+            <li>
+                <a href="#trang-chu">
+                    TRANG CHỦ
+                </a>
+            </li>
+            <li>
+                <a href="#gioi-thieu">
+                    GIỚI THIỆU
+                </a>
+            </li>
+            <li>
+                <a href="#time-line">
+                    TIMELINE
+                </a>
+            </li>
+            <li>
+                <a href="#thanh-tuu">
+                    THÀNH TỰU
+                </a>
+            </li>
+            <li>
+                <a href="#digital-section">
+                    CHUYỂN ĐỔI SỐ
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="content-card" id="trang-chu">
+            <img src="binh-chung/binhchungbackground.jpg" alt="Tin tức">
+            <div class="overlay"></div>
+            <nav class="card-body">
+                <nav class="title">
+                    <p class="date">CUỘC THI TÌM HIỂU</p>
+                    <h1 class="title-header">80 NĂM NGÀY THÀNH LẬP binh-chung CÔNG BINH (25/3/1946- 25/3/2026)</h1>
+                    <p class="h2-script">
+                        Trải qua 80 năm xây dựng, chiến đấu và trưởng thành (25/3/1945 – 25/3/2025),
+                        binh-chung Công binh đã khẳng định vị trí là lực lượng nòng cốt trên mặt trận 
+                        bảo đảm công trình, góp phần quan trọng vào mọi thắng lợi của Quân đội nhân dân 
+                        Việt Nam và sự nghiệp bảo vệ Tổ quốc
+                    </p>
+                </nav>
+            </nav>
+        
+            <!-- nút mở video -->
+            <nav class="video">
+                <button class="openvideo" id="openVideo">Xem Video Giới Thiệu</button>
+                    <div class="video-overlay" id="videoOverlay">
+                        <div class="video-container">
+                            <button class="close-button" id="closeVideoBtn">&times;</button>
+                            <video controls id="video">
+                                <source src="intro.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+            </nav>
+        </div>
+    <section id="gioi-thieu">
+        <section class="author-section">
+        <div class="author-container">
+            <div class="author-header">
+                <h3>Nhóm tác giả</h3>
+                <div class="author-unit-info">
+                    Đại đội 3, Tiểu đoàn 2, Trường Sĩ quan Công binh, binh-chung Công binh
+                </div>
+            </div>
+
+            <div class="authors-list">
+                <div class="author-item">
+                    <div class="author-number">1</div>
+                    <div class="author-info">
+                        <div class="author-name">TRẦN ĐÌNH DUY</div>
+                        <div class="author-details">
+                            <span>25 tuổi</span>
+                            <span class="rank">Thượng úy</span>
+                            <span>Chính trị viên</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="author-item">
+                    <div class="author-number">2</div>
+                    <div class="author-info">
+                        <div class="author-name">ĐÀM DUY MINH HIẾU</div>
+                        <div class="author-details">
+                            <span>25 tuổi</span>
+                            <span class="rank">Trung úy</span>
+                            <span>Trung đội trưởng</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="author-item">
+                    <div class="author-number">3</div>
+                    <div class="author-info">
+                        <div class="author-name">NGUYỄN LÊ HOÀNG HUY</div>
+                        <div class="author-details">
+                            <span>19 tuổi</span>
+                            <span class="rank">Hạ sĩ</span>
+                            <span>Học viên</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <div class="content-script">
+            <nav class="intro">
+                <nav class="gioithieu">
+                <p >Giới Thiệu</p>
+                </nav>
+                <p class="intro-script">
+                    Tám mươi năm – một chặng đường vẻ vang của binh-chung Công binh, 
+                    lực lượng “đi trước mở đường, về sau hoàn thành thắng lợi”, luôn 
+                    hiện diện ở những nơi gian khổ nhất của Tổ quốc. Từ những ngày đầu 
+                    kháng chiến chống thực dân đến thời kỳ xây dựng và bảo vệ Tổ quốc 
+                    hôm nay, người lính Công binh vẫn bền bỉ, sáng tạo, vượt mọi thử 
+                    thách để hoàn thành sứ mệnh “mở đường cho chiến thắng, dựng xây 
+                    những công trình của niềm tin”. Nhân dịp kỷ niệm 80 năm Ngày thành 
+                    lập binh-chung Công binh (25/3/1946 – 25/3/2026), cuộc thi “Tìm hiểu 
+                    80 năm Ngày thành lập binh-chung Công binh” được tổ chức nhằm ôn lại 
+                    truyền thống anh hùng, tri ân các thế hệ cha anh và khơi dậy niềm tự 
+                    hào, tinh thần cống hiến trong mỗi cán bộ, chiến sĩ hôm nay. Đây không
+                    chỉ là dịp nhìn lại một chặng đường lịch sử, mà còn là cơ hội để thế hệ
+                    trẻ tiếp nối ngọn lửa truyền thống, góp phần tô thắm thêm phẩm chất “Bộ 
+                    đội Cụ Hồ” trong thời đại
+                </p>
+            </nav>
+            <img src="binh-chung/introanh.jpg" alt="" class="intro-img">           
+        </div>
+        <div class="div-quote">
+            <nav class="nav-quote">
+                <nav class="quote">
+                    “Từ hành trình ấy, ta càng thêm trân trọng và tự hào về những chiến công thầm lặng mà vĩ đại của người lính Công binh Việt Nam.”
+                </nav>
+            </nav>
+        </div>
+        </section>
+        <!-- timeline -->
+        <section id="time-line">
+        <div class="timeline-title">TIMELINE</div>
+    
+    <div class="carousel-container">
+        <div class="carousel-wrapper">
+            <div class="carousel-track">
+                <!-- Item 1 -->
+                <div class="carousel-item active" data-index="0">
+                    <div class="item-content">
+                        <img src="binh-chung/thanhlap.jpeg" alt="Hoàn cảnh ra đời" class="item-image">
+                        <div class="item-info">
+                            <h3 class="item-title">HOÀN CẢNH RA ĐỜI</h3>
+                            <button class="view-more-btn">Xem thêm</button>
+                            <div class="item-description">
+                                <ul>
+                                    <li>15–20/4/1945 Hội nghị Quân sự Bắc Kỳ, chủ trương 'đội quân thợ'.</li>
+                                    <li>8/1945 Toàn quốc chuẩn bị Tổng khởi nghĩa; phong trào phá đường, vật cản.</li>
+                                    <li>25/3/1946 Sắc lệnh 34/SL, thành lập Công chính Giao thông Cục.</li>
+                                    <li>3–4/1946 Kiện toàn tổ chức; trụ sở Phạm Ngũ Lão (Hà Nội).</li>
+                                    <li>2/12/1946 Hoàng Đạo Thúy làm Cục trưởng; đổi thành Giao thông Công binh Cục.</li>
+                                    <li>19/12/1946 Kháng chiến toàn quốc; công binh thực hiện 'tiêu thổ kháng chiến'.</li>
+                                    <li>1/1947 Đội Công binh Huỳnh Thúc Kháng lập công ở Nam Bộ.</li>
+                                    <li>Thu–Đông/1947 Chiến dịch Việt Bắc; Đại đội 9 Công binh tham chiến.</li>
+                                    <li>1950 Chiến dịch Biên giới; lần đầu tham gia chiến dịch lớn, cầu phao/phà.</li>
+                                    <li>15/1/1951 Thành lập Trung đoàn Công binh 151 (chủ lực đầu tiên).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="carousel-item" data-index="1">
+                    <div class="item-content">
+                        <img src="binh-chung/chongphap.jpg" alt="Kháng chiến chống Pháp" class="item-image">
+                        <div class="item-info">
+                            <h3 class="item-title">KHÁNG CHIẾN CHỐNG PHÁP</h3>
+                            <button class="view-more-btn">Xem thêm</button>
+                            <div class="item-description">
+                                <ul>
+                                    <li>1951–1952 Các chiến dịch Trần Hưng Đạo, Hoàng Hoa Thám, Quang Trung, Hòa Bình.</li>
+                                    <li>1952 Tây Bắc: bảo đảm vượt sông Thao, mở đường chiến dịch.</li>
+                                    <li>1953 Chuẩn bị Đông–Xuân 1953–1954.</li>
+                                    <li>12/1953 Lệnh chuẩn bị cho Điện Biên Phủ.</li>
+                                    <li>1953–1954 Phá bom nổ chậm; bảo đảm đường cơ động (Tạ Khoa, Cò Nòi, Pha Đin…).</li>
+                                    <li>1954 Đại đội 124 phá 103 thác sông Nậm Na mở tuyến vận tải.</li>
+                                    <li>1954 Đội phá bom 83, điển hình Chu Văn Khâm và đồng đội.</li>
+                                    <li>6/5/1954 Nổ bộc phá đồi A1 (đường hầm ~50m).</li>
+                                    <li>7/5/1954 Toàn thắng Điện Biên Phủ.</li>
+                                    <li>1954 Tổng kết 9 năm: huân chương, cờ thi đua cho đơn vị công binh.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="carousel-item" data-index="2">
+                    <div class="item-content">
+                        <img src="binh-chung/chongmy.jpg" alt="Kháng chiến chống Mỹ" class="item-image">
+                        <div class="item-info">
+                            <h3 class="item-title">KHÁNG CHIẾN CHỐNG ĐẾ QUỐC MỸ</h3>
+                            <button class="view-more-btn">Xem thêm</button>
+                            <div class="item-description">
+                                <ul>
+                                    <li>17/8/1954 Tổ chức Phòng Công binh (BQP–TTL).</li>
+                                    <li>3/11/1955 Thành lập Cục Công binh.</li>
+                                    <li>1959 Triển lãm kỹ thuật; Bác Hồ thăm, ghi sổ vàng.</li>
+                                    <li>5/1959 Đoàn 559; mở đường Trường Sơn.</li>
+                                    <li>28/6/1965 Thành lập Bộ Tư lệnh Công binh.</li>
+                                    <li>2/1966 Diễn tập bắc cầu phao sông Hồng (Bác, Thủ tướng, Đại tướng dự).</li>
+                                    <li>1968 Trọng điểm Khu 4; khẩu hiệu 'Sống bám cầu đường…'.</li>
+                                    <li>1972 Chống tập kích đường không; bảo đảm công trình, cơ động.</li>
+                                    <li>3–4/1975 Buôn Ma Thuột; bảo đảm vượt sông Sê-rê-pốc.</li>
+                                    <li>30/4/1975 Chiến dịch Hồ Chí Minh toàn thắng.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="carousel-item" data-index="3">
+                    <div class="item-content">
+                        <img src="binh-chung/1979.jpg" alt="Bảo vệ Tổ quốc" class="item-image">
+                        <div class="item-info">
+                            <h3 class="item-title">GIAI ĐOẠN BẢO VỆ TỔ QUỐC (1979 - 1989)</h3>
+                            <button class="view-more-btn">Xem thêm</button>
+                            <div class="item-description">
+                                <ul>
+                                    <li>1979 Chiến tranh biên giới Tây Nam; giúp bạn Campuchia.</li>
+                                    <li>2–3/1979 Chiến sự biên giới phía Bắc; bảo đảm cơ động, trận địa.</li>
+                                    <li>1979–1980 Củng cố công trình phòng thủ biên giới, hải đảo.</li>
+                                    <li>1980–1985 Rà phá bom mìn diện rộng sau chiến tranh.</li>
+                                    <li>1983–1986 Xây dựng công trình quốc phòng then chốt.</li>
+                                    <li>1986 Thời kỳ Đổi mới; đổi mới tổ chức, huấn luyện.</li>
+                                    <li>1987–1988 Mở đường tuần tra, hạ tầng biên giới.</li>
+                                    <li>1988 Bắt đầu nghiên cứu, thiết kế trạm DK1.</li>
+                                    <li>1989 Thi công các công trình DK1 đầu tiên.</li>
+                                    <li>1989 Mở luồng trên nền san hô phục vụ nhiệm vụ biển, đảo.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="carousel-item" data-index="4">
+                    <div class="item-content">
+                        <img src="binh-chung/cnh-hđh.jpg" alt="CNH-HĐH" class="item-image">
+                        <div class="item-info">
+                            <h3 class="item-title">THỜI KÌ CNH-HĐH ĐẤT NƯỚC (1989 - nay)</h3>
+                            <button class="view-more-btn">Xem thêm</button>
+                            <div class="item-description">
+                                <ul>
+                                    <li>1989–1998 Hoàn thành loạt công trình DK1 thế hệ đầu.</li>
+                                    <li>26/02/1990 Quyết định BQP giao binh-chung làm chủ đầu tư DK1.</li>
+                                    <li>2001 Huân chương Độc lập hạng Nhất.</li>
+                                    <li>2010 Huân chương Sao Vàng.</li>
+                                    <li>2013 Danh hiệu 'Anh hùng LLVTND' (lần 2).</li>
+                                    <li>2019 Thành lập đội tuyển Army Games; liên tiếp đạt huy chương.</li>
+                                    <li>2019–2025 Đội Công binh tham gia GGHB Liên Hợp Quốc.</li>
+                                    <li>2023 Đội cứu sập ASEAN cứu trợ động đất Thổ Nhĩ Kỳ.</li>
+                                    <li>2024 Bắc cầu phao Phong Châu; Huân chương Bảo vệ Tổ quốc hạng Ba.</li>
+                                    <li>2025 Mục tiêu, chỉ tiêu nhiệm vụ hướng tới 80 năm truyền thống.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button class="nav-arrow prev">‹</button>
+            <button class="nav-arrow next">›</button>
+        </div>
+
+        <!-- Dots Navigation -->
+        <div class="dots-container">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+            <span class="dot" data-index="4"></span>
+        </div>
+    </div>
+    </section>
+    <!-- thành tựu -->
+    <section id="thanh-tuu">
+    <div class="thanhtuu">
+        <div class="thanhtuu-title">THÀNH TỰU</div>
+
+        <div class="achievement-carousel-container">
+            <div class="achievement-carousel-wrapper">
+                <div class="achievement-track">
+                    <!-- Card 1 -->
+                    <div class="achievement-card active" data-index="0">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&h=400&fit=crop" alt="Mở đường" class="achievement-image">
+                        <div class="achievement-info">
+                            <div class="achievement-number">1</div>
+                            <div class="achievement-title">TRONG KHÁNG CHIẾN CHỐNG PHÁP</div>
+                            <div class="achievement-description">
+                                Hơn 100 nhiệm vụ mở đường chiến lược, vượt qua địa hình hiểm trở, 
+                                đảm bảo hành quân cho các chiến dịch lớn trong lịch sử. Từ Điện Biên Phủ 
+                                đến Chiến dịch Hồ Chí Minh, lực lượng Công binh luôn đi đầu, phá vỡ mọi 
+                                rào cản để mở đường cho quân tiến.
+                            </div>
+                            <button class="view-more-btn">Xem thêm</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="achievement-card" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&h=400&fit=crop" alt="Xây dựng" class="achievement-image">
+                        <div class="achievement-info">
+                            <div class="achievement-number">2</div>
+                            <div class="achievement-title">TRONG KHÁNG CHIẾN CHỐNG MỸ</div>
+                            <div class="achievement-description">
+                                Hơn 200 công trình cầu, đường, sân bay quân sự được xây dựng và bảo vệ, 
+                                góp phần quan trọng vào phát triển đất nước. Các trạm DK1, cầu Phong Châu, 
+                                và nhiều công trình trọng điểm khác là minh chứng cho năng lực vượt trội.
+                            </div>
+                            <button class="view-more-btn">Xem thêm</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="achievement-card" data-index="2">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=500&h=400&fit=crop" alt="Gìn giữ hòa bình" class="achievement-image">
+                        <div class="achievement-info">
+                            <div class="achievement-number">3</div>
+                            <div class="achievement-title">TRONG THỜI KỲ XÂY DỰNG VÀ ĐỔI MỚI</div>
+                            <div class="achievement-description">
+                                Nhiều huân, huy chương quốc tế từ các sứ mệnh gìn giữ hòa bình LHQ, 
+                                thể hiện năng lực và tinh thần trách nhiệm cao. Đội Công binh Việt Nam 
+                                được đánh giá cao về chuyên môn và tinh thần quốc tế.
+                            </div>
+                            <button class="view-more-btn">Xem thêm</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="achievement-card" data-index="3">
+                        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=500&h=400&fit=crop" alt="Cứu hộ" class="achievement-image">
+                        <div class="achievement-info">
+                            <div class="achievement-number">4</div>
+                            <div class="achievement-title">CÁC THÀNH TỰU HIỆN NAY</div>
+                            <div class="achievement-description">
+                                Luôn sẵn sàng chiến đấu, ứng phó thiên tai, cứu hộ cứu nạn mọi lúc, 
+                                mọi nơi, bảo vệ tính mạng và tài sản của nhân dân. Từ động đất Thổ Nhĩ Kỳ 
+                                đến các thiên tai trong nước, Công binh luôn có mặt kịp thời.
+                            </div>
+                            <button class="view-more-btn">Xem thêm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+                <button class="achievement-arrow prev">‹</button>
+                <button class="achievement-arrow next">›</button>
+
+            <!-- Dots Navigation -->
+            <div class="achievement-dots">
+                <span class="achievement-dot active" data-index="0"></span>
+                <span class="achievement-dot" data-index="1"></span>
+                <span class="achievement-dot" data-index="2"></span>
+                <span class="achievement-dot" data-index="3"></span>
+            </div>
+        </div>
+    </div>
+
+</section>
+    <!-- chuyendoiso -->
+    
+    <section class="digital-section" id="digital-section">
+        <div class="digital-container">
+            <!-- Header -->
+            <div class="digital-header">
+                <h2 class="digital-title">Chuyển đổi số trong binh-chung Công binh</h2>
+                <p class="digital-intro">
+                    Bước vào thời kỳ Cách mạng công nghiệp 4.0, binh-chung Công binh từng bước đẩy mạnh 
+                    chuyển đổi số, ứng dụng khoa học công nghệ hiện đại vào huấn luyện, sẵn sàng chiến đấu 
+                    và bảo đảm công trình.
+                </p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="cards-grid">
+                <!-- Card 1 -->
+                <div class="tech-card" data-delay="0">
+                    <div class="card-icon">
+                        <img src="https://file3.qdnd.vn/data/images/0/2024/03/10/upload_2058/4.jpg?dpi=150&quality=100&w=870" alt="UAV">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">01</span>
+                        <h3 class="card-title">UAV – Bản đồ số công binh</h3>
+                        <p class="card-description">
+                            Trinh sát địa hình, lập bản đồ 3D, hỗ trợ chỉ huy từ xa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="tech-card" data-delay="100">
+                    <div class="card-icon">
+                        <img src="binh-chung/robot.jpg" alt="Robot">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">02</span>
+                        <h3 class="card-title">Robot công binh</h3>
+                        <p class="card-description">
+                            Robot dò mìn, gắp nổ, xử lý vật liệu nổ từ xa, giảm tối đa nguy hiểm cho bộ đội.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="tech-card" data-delay="200">
+                    <div class="card-icon">
+                        <img src="binh-chung/3d.jpg" alt="3D">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">03</span>
+                        <h3 class="card-title">Huấn luyện mô phỏng 3D – VR</h3>
+                        <p class="card-description">
+                            Diễn tập đặt cầu, vượt sông, xử lý bom mìn trong môi trường mô phỏng an toàn.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="tech-card" data-delay="300">
+                    <div class="card-icon">
+                        <img src="binh-chung/qr.jpeg" alt="QR">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">04</span>
+                        <h3 class="card-title">Quản lý trang bị bằng mã QR & cơ sở dữ liệu số</h3>
+                        <p class="card-description">
+                            Mỗi khí tài: hồ sơ điện tử, lịch bảo dưỡng, tình trạng kỹ thuật rõ ràng.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="tech-card" data-delay="400">
+                    <div class="card-icon">
+                        <img src="binh-chung/lienlac.jpg" alt="SoHoa">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">05</span>
+                        <h3 class="card-title">Hệ thống chỉ huy – tác chiến số hóa</h3>
+                        <p class="card-description">
+                            Bản đồ tác chiến số, chia sẻ thông tin thời gian thực.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="tech-card" data-delay="500">
+                    <div class="card-icon">
+                        <img src="binh-chung/thuvienso.jpg" alt="ThuVienSo">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-number">06</span>
+                        <h3 class="card-title">Số hóa truyền thống – xây dựng thư viện số công binh</h3>
+                        <p class="card-description">
+                            Tư liệu chiến dịch, ảnh, video, bài học kinh nghiệm được lưu trữ, tra cứu nhanh.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Left Side - Image -->
+            <div class="footer-image">
+                <!-- Thay thế src bằng đường dẫn ảnh của bạn -->
+                <img src="binh-chung/logo.png" alt="Tác giả">
+            </div>
+
+            <!-- Right Side - Info -->
+            <div class="footer-content">
+                <div class="tac-gia">
+                    THÔNG TIN NHÓM TÁC GIẢ
+                </div>
+                
+                <div class="tac-gia-number">
+                    <ul class="ul-tac-gia">
+                        <li>TRẦN ĐÌNH DUY – 25 TUỔI – THƯỢNG ÚY, CHÍNH TRỊ VIÊN</li>
+                        <li>ĐÀM DUY MINH HIẾU – 25 TUỔI – TRUNG ÚY, TRUNG ĐỘI TRƯỞNG</li>
+                        <li>NGUYỄN LÊ HOÀNG HUY – 19 TUỔI – HẠ SĨ, HỌC VIÊN</li>
+                    </ul>
+                </div>
+
+                <div class="dia-chi">
+                    ĐƠN VỊ: ĐẠI ĐỘI 3, TIỂU ĐOÀN 2, TRƯỜNG SĨ QUAN CÔNG BINH, binh-chung CÔNG BINH
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 binh-chung Công binh. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
