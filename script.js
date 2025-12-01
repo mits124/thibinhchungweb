@@ -1,4 +1,4 @@
-// ============= MENU =============
+// Menu
 const menuBtn = document.getElementById('menuBtn');
 const closeBtn = document.getElementById('closeBtn');
 const sidebar = document.getElementById('sidebar');
@@ -26,7 +26,7 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-// ============= SMOOTH SCROLL =============
+// Enhanced Smooth Scroll
 function initSmoothScroll() {
     const header = document.querySelector('header');
     const menuLinks = document.querySelectorAll('.menu-items a[href^="#"]');
@@ -90,7 +90,7 @@ function initSmoothScroll() {
 
 initSmoothScroll();
 
-// ============= VIDEO =============
+// Video
 document.addEventListener('DOMContentLoaded', function() {
     const openBtn = document.getElementById('openVideo');
     const videoOverlay = document.getElementById('videoOverlay');
@@ -127,62 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// ============= SWIPE HANDLER CLASS =============
-class SwipeHandler {
-    constructor(element, onSwipeLeft, onSwipeRight) {
-        this.element = element;
-        this.onSwipeLeft = onSwipeLeft;
-        this.onSwipeRight = onSwipeRight;
-        this.startX = 0;
-        this.startY = 0;
-        this.distX = 0;
-        this.distY = 0;
-        this.threshold = 50;
-        this.restraint = 100;
-        this.allowedTime = 300;
-        this.startTime = 0;
-        
-        this.init();
-    }
-    
-    init() {
-        this.element.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
-        this.element.addEventListener('touchmove', (e) => this.handleTouchMove(e), { passive: false });
-        this.element.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
-    }
-    
-    handleTouchStart(e) {
-        const touch = e.touches[0];
-        this.startX = touch.pageX;
-        this.startY = touch.pageY;
-        this.startTime = new Date().getTime();
-    }
-    
-    handleTouchMove(e) {
-        if (Math.abs(e.touches[0].pageX - this.startX) > 10) {
-            e.preventDefault();
-        }
-    }
-    
-    handleTouchEnd(e) {
-        const touch = e.changedTouches[0];
-        this.distX = touch.pageX - this.startX;
-        this.distY = touch.pageY - this.startY;
-        const elapsedTime = new Date().getTime() - this.startTime;
-        
-        if (elapsedTime <= this.allowedTime) {
-            if (Math.abs(this.distX) >= this.threshold && Math.abs(this.distY) <= this.restraint) {
-                if (this.distX < 0) {
-                    this.onSwipeLeft();
-                } else {
-                    this.onSwipeRight();
-                }
-            }
-        }
-    }
-}
-
-// ============= TIMELINE WITH SWIPE =============
+// ============= TIMELINE CAROUSEL =============
 const timelineSection = document.querySelector('#time-line');
 if (timelineSection) {
     const items = timelineSection.querySelectorAll('.carousel-item');
@@ -190,13 +135,7 @@ if (timelineSection) {
     const prevBtn = timelineSection.querySelector('.nav-arrow.prev');
     const nextBtn = timelineSection.querySelector('.nav-arrow.next');
     const wrapper = timelineSection.querySelector('.carousel-wrapper');
-    const title = timelineSection.querySelector('.timeline-title');
     let currentIndex = 0;
-
-    // Add counter to title
-    if (title) {
-        title.setAttribute('data-count', `${currentIndex + 1}/${items.length}`);
-    }
 
     function updateCarousel() {
         items.forEach((item, index) => {
@@ -223,11 +162,6 @@ if (timelineSection) {
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentIndex);
         });
-
-        // Update counter
-        if (title) {
-            title.setAttribute('data-count', `${currentIndex + 1}/${items.length}`);
-        }
     }
 
     function nextSlide() {
@@ -240,9 +174,6 @@ if (timelineSection) {
         updateCarousel();
     }
 
-    // Initialize swipe handler
-    new SwipeHandler(wrapper, nextSlide, prevSlide);
-
     if (prevBtn) prevBtn.addEventListener('click', prevSlide);
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
@@ -253,7 +184,7 @@ if (timelineSection) {
         });
     });
 
-    // View more buttons
+    // View more buttons - CHỈ cho timeline
     timelineSection.querySelectorAll('.view-more-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -272,7 +203,7 @@ if (timelineSection) {
         });
     });
 
-    // Click on side items (for desktop/tablet)
+    // Click on side items
     items.forEach((item) => {
         item.addEventListener('click', (e) => {
             if (item.classList.contains('active')) {
@@ -289,36 +220,36 @@ if (timelineSection) {
                 nextSlide();
             }
         });
+        
+        item.addEventListener('mouseenter', () => {
+            if (item.classList.contains('prev') || item.classList.contains('next')) {
+                item.style.cursor = 'pointer';
+            }
+        });
     });
 
-    // Auto play
-    let autoPlayInterval = setInterval(nextSlide, 5000);
-    let isTouching = false;
-
-    wrapper.addEventListener('touchstart', () => {
-        isTouching = true;
-        clearInterval(autoPlayInterval);
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+        const activeItem = timelineSection.querySelector('.carousel-item.active');
+        if (activeItem && !activeItem.contains(e.target) && !e.target.closest('.nav-arrow')) {
+            const description = activeItem.querySelector('.item-description');
+            const btn = activeItem.querySelector('.view-more-btn');
+            
+            if (description && description.classList.contains('show')) {
+                description.classList.remove('show');
+                btn.textContent = 'Xem thêm';
+                btn.classList.remove('active');
+                wrapper.classList.remove('expanded');
+            }
+        }
     });
 
-    wrapper.addEventListener('touchend', () => {
-        setTimeout(() => {
-            isTouching = false;
-            autoPlayInterval = setInterval(nextSlide, 5000);
-        }, 3000);
-    });
 
-    wrapper.addEventListener('mouseenter', () => {
-        if (!isTouching) clearInterval(autoPlayInterval);
-    });
-
-    wrapper.addEventListener('mouseleave', () => {
-        if (!isTouching) autoPlayInterval = setInterval(nextSlide, 5000);
-    });
 
     updateCarousel();
 }
 
-// ============= ACHIEVEMENT WITH SWIPE =============
+// ============= THÀNH TỰU CAROUSEL =============
 const achievementSection = document.querySelector('#thanh-tuu');
 if (achievementSection) {
     const achievementCards = achievementSection.querySelectorAll('.achievement-card');
@@ -353,21 +284,6 @@ if (achievementSection) {
         }
     }
 
-    function nextAchievement() {
-        closeAchievementDescription(achievementCards[currentAchievementIndex]);
-        currentAchievementIndex = (currentAchievementIndex + 1) % achievementCards.length;
-        updateAchievementCarousel();
-    }
-
-    function prevAchievement() {
-        closeAchievementDescription(achievementCards[currentAchievementIndex]);
-        currentAchievementIndex = (currentAchievementIndex - 1 + achievementCards.length) % achievementCards.length;
-        updateAchievementCarousel();
-    }
-
-    // Initialize swipe handler
-    new SwipeHandler(achievementWrapper, nextAchievement, prevAchievement);
-
     // Click on cards
     achievementCards.forEach((card, index) => {
         card.addEventListener('click', () => {
@@ -380,8 +296,21 @@ if (achievementSection) {
     });
 
     // Arrow navigation
-    if (prevArrow) prevArrow.addEventListener('click', prevAchievement);
-    if (nextArrow) nextArrow.addEventListener('click', nextAchievement);
+    if (prevArrow) {
+        prevArrow.addEventListener('click', () => {
+            closeAchievementDescription(achievementCards[currentAchievementIndex]);
+            currentAchievementIndex = (currentAchievementIndex - 1 + achievementCards.length) % achievementCards.length;
+            updateAchievementCarousel();
+        });
+    }
+
+    if (nextArrow) {
+        nextArrow.addEventListener('click', () => {
+            closeAchievementDescription(achievementCards[currentAchievementIndex]);
+            currentAchievementIndex = (currentAchievementIndex + 1) % achievementCards.length;
+            updateAchievementCarousel();
+        });
+    }
 
     // Dots navigation
     achievementDots.forEach((dot, index) => {
@@ -394,7 +323,7 @@ if (achievementSection) {
         });
     });
 
-    // View more buttons
+    // View more buttons - CHỈ cho achievement
     achievementSection.querySelectorAll('.view-more-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -419,31 +348,9 @@ if (achievementSection) {
         });
     });
 
-    // Auto play
-    let achievementAutoPlay = setInterval(nextAchievement, 5000);
-    let isAchievementTouching = false;
 
-    achievementWrapper.addEventListener('touchstart', () => {
-        isAchievementTouching = true;
-        clearInterval(achievementAutoPlay);
-    });
 
-    achievementWrapper.addEventListener('touchend', () => {
-        setTimeout(() => {
-            isAchievementTouching = false;
-            achievementAutoPlay = setInterval(nextAchievement, 5000);
-        }, 3000);
-    });
-
-    achievementWrapper.addEventListener('mouseenter', () => {
-        if (!isAchievementTouching) clearInterval(achievementAutoPlay);
-    });
-
-    achievementWrapper.addEventListener('mouseleave', () => {
-        if (!isAchievementTouching) {
-            achievementAutoPlay = setInterval(nextAchievement, 5000);
-        }
-    });
+    
 
     updateAchievementCarousel();
 }
@@ -478,37 +385,3 @@ document.querySelectorAll('.tech-card').forEach(card => {
     });
 });
 
-// ============= VISUAL FEEDBACK =============
-document.querySelectorAll('.achievement-card, .carousel-item').forEach(element => {
-    element.addEventListener('touchstart', function(e) {
-        const ripple = document.createElement('div');
-        ripple.style.position = 'absolute';
-        ripple.style.borderRadius = '50%';
-        ripple.style.background = 'rgba(140, 16, 7, 0.3)';
-        ripple.style.width = '20px';
-        ripple.style.height = '20px';
-        ripple.style.pointerEvents = 'none';
-        
-        const rect = this.getBoundingClientRect();
-        const x = e.touches[0].clientX - rect.left;
-        const y = e.touches[0].clientY - rect.top;
-        
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.style.transform = 'translate(-50%, -50%) scale(0)';
-        ripple.style.transition = 'transform 0.6s ease-out, opacity 0.6s ease-out';
-        ripple.style.opacity = '1';
-        
-        this.style.position = 'relative';
-        this.appendChild(ripple);
-        
-        setTimeout(() => {
-            ripple.style.transform = 'translate(-50%, -50%) scale(10)';
-            ripple.style.opacity = '0';
-        }, 10);
-        
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    });
-});
