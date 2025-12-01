@@ -560,6 +560,7 @@ main {
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'Be Vietnam Pro';
         }
 
         .item-description {
@@ -1518,7 +1519,7 @@ main {
                 display: flex;
                 color: var(--red-color);
                 position: relative;
-                bottom: 90px;
+                bottom: 60px;
                 justify-content: center;
                 font-family: var(--font-four);
                 font-size: 15px;
@@ -1532,6 +1533,23 @@ main {
             }
             .thanhtuu .view-more-btn {
                 margin-top: 17px;
+            }
+            .carousel-container .nav-arrow.next, 
+            .carousel-container .nav-arrow.prev {
+                top: 50%;
+                border-radius: 5px;
+                height: 40px;
+                background-color: var(--red-color);
+                color: var(--text-primary);
+            }
+            .carousel-container .view-more-btn{
+                height: 41px;
+            }
+            .carousel-container .nav-arrow.next {
+                right: -40px;
+            }
+            .carousel-container .nav-arrow.prev {
+                left: -40px;
             }
         }
 
