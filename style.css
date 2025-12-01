@@ -500,7 +500,9 @@ main {
             transform: scale(0.7) translateX(0);
             pointer-events: none;
         }
-
+        .carousel-item.active .item-content {
+            pointer-events: auto;
+        }
         .carousel-item.active {
             opacity: 1;
             transform: scale(1) translateX(0);
@@ -513,6 +515,8 @@ main {
             transform: scale(0.85) translateX(-60%);
             z-index: 2;
             filter: blur(2px);
+            pointer-events: auto;
+            cursor: pointer;
         }
 
         .carousel-item.next {
@@ -520,8 +524,13 @@ main {
             transform: scale(0.85) translateX(60%);
             z-index: 2;
             filter: blur(2px);
+            pointer-events: auto;
+            cursor: pointer;
         }
-
+        .carousel-item.prev .item-content,
+        .carousel-item.next .item-content {
+            pointer-events: none;
+        }
         .item-content {
             background: white;
             border-radius: 16px;
@@ -684,6 +693,7 @@ main {
             .timeline-title{
                 margin: 40px auto;
             }
+            
         }
 
 
@@ -737,141 +747,182 @@ main {
         }
 
         /* ACHIEVEMENT CARD */
-        .achievement-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            flex-shrink: 0;
-            width: 340px;
-            height: 420px;
-            opacity: 0.5;
-            filter: blur(2px);
-            transform: scale(0.85);
-        }
+.achievement-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    flex-shrink: 0;
+    width: 340px;
+    height: 420px;
+    opacity: 0.5;
+    filter: blur(2px);
+    transform: scale(0.85);
+}
 
-        /* Card đang active */
-        .achievement-card.active {
-            width: 450px;
-            height: 520px;
-            opacity: 1;
-            filter: blur(0);
-            transform: scale(1);
-            z-index: 10;
-        }
+.achievement-card.active {
+    width: 450px;
+    height: 520px;
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+    z-index: 10;
+}
 
-        /* Card mở rộng khi show description */
-        .achievement-card.active.expanded {
-            height: 700px;
-        }
+.achievement-card.active.expanded {
+    height: 700px;  /* Tăng chiều cao khi mở rộng */
+}
 
-        /* Card image */
-        .achievement-image {
-            width: 100%;
-            height: 60%;
-            object-fit: cover;
-            display: block;
-        }
+.achievement-image {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    display: block;
+}
 
-        .achievement-card.active .achievement-image {
-            height: 65%;
-        }
+.achievement-card.active .achievement-image {
+    height: 55%;  /* Thu nhỏ ảnh khi active */
+}
 
-        /* Card info */
-        .achievement-info {
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 45%;
-            justify-content: flex-start;
-        }
+/* Card info - QUAN TRỌNG */
+.achievement-info {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 40%;
+    justify-content: flex-start;
+    overflow: visible;  /* Cho phép nội dung tràn ra */
+}
 
-        .achievement-card.active .achievement-info {
-            padding: 25px;
-            height: 55%;
-        }
+.achievement-card.active .achievement-info {
+    padding: 25px;
+    height: 55%;
+}
 
-        .achievement-number {
-            position: absolute;
-            top: 40px;
-            right: 20px;
-            color: rgba(116, 110, 110, 0.15);
-            font-weight: 800;
-            font-size: 190px;
-            font-family: var(--font-primary);
-            line-height: 1;
-            pointer-events: none;
-            z-index: 0;
-        }
+.achievement-number {
+    position: absolute;
+    top: 40px;
+    right: 20px;
+    color: rgba(116, 110, 110, 0.15);
+    font-weight: 800;
+    font-size: 190px;
+    font-family: var(--font-primary);
+    line-height: 1;
+    pointer-events: none;
+    z-index: 0;
+}
 
-        .achievement-card.active .achievement-number {
-            font-size: 260px;
-            top: -15px;
-            right: 15px;
-        }
+.achievement-card.active .achievement-number {
+    font-size: 260px;
+    top: -15px;
+    right: 15px;
+}
 
-        .achievement-title {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--red-color);
-            margin-bottom: 15px;
-            line-height: 1.3;
-            padding-top: 5px;
-            position: relative;
-            z-index: 1;
-            font-family: 'Be Vietnam Pro', sans-serif;
-        }
+.achievement-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--red-color);
+    margin-bottom: 10px;
+    line-height: 1.3;
+    padding-top: 5px;
+    position: relative;
+    z-index: 1;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    min-height: auto;  /* Bỏ min-height cố định */
+}
 
-        .achievement-card.active .achievement-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            padding-top: 10px;
-        }
+.achievement-card.active .achievement-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
 
-        .achievement-description {
-            font-size: 14px;
-            color: #666;
-            line-height: 1.6;
-            max-height: 0;
-            overflow-y: auto;
-            opacity: 0;
-            transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
-            text-align: left;
-            flex-shrink: 0;
-        }
+/* View More Button - LUÔN HIỂN THỊ */
+.view-more-btn {
+    background: var(--red-color);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    font-family: var(--font-secondary);
+    display: inline-block;
+    align-self: center;
+    position: relative;
+    z-index: 1;
+}
 
-        .achievement-description.show {
-            max-height: 350px;
-            opacity: 1;
-            margin: 10px 0;
-        }
+.view-more-btn:hover {
+    background: #6b0c05;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(140, 16, 7, 0.3);
+}
 
-        .achievement-description::-webkit-scrollbar {
-            width: 6px;
-        }
+.view-more-btn.active {
+    background: #555;
+}
 
-        .achievement-description::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
+/* Description - CÓ THỂ CUỘN */
+.achievement-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    max-height: 0;
+    overflow-y: auto;
+    opacity: 0;
+    transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
 
-        .achievement-description::-webkit-scrollbar-thumb {
-            background: var(--red-color);
-            border-radius: 10px;
-        }
+.achievement-description.show {
+    max-height: 280px;  /* Chiều cao tối đa khi mở */
+    opacity: 1;
+    margin-top: 10px;
+}
 
-        .achievement-description::-webkit-scrollbar-thumb:hover {
-            background: #6b0c05;
-        }
+.achievement-description::-webkit-scrollbar {
+    width: 6px;
+}
 
-        .achievement-card.active .achievement-description {
-            font-size: 15px;
-        }
+.achievement-description::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.achievement-description::-webkit-scrollbar-thumb {
+    background: var(--red-color);
+    border-radius: 10px;
+}
+
+.achievement-description::-webkit-scrollbar-thumb:hover {
+    background: #6b0c05;
+}
+
+.achievement-card.active .achievement-description {
+    font-size: 15px;
+}
+
+.achievement-description ul {
+    list-style-position: inside;
+    padding-left: 0;
+    margin: 0;
+}
+
+.achievement-description li {
+    margin-bottom: 10px;
+}
 
         /* View More Button */
         .view-more-btn {
@@ -1462,3 +1513,262 @@ main {
                 width: auto;
             }
         }
+
+        /* ============= MOBILE ENHANCEMENTS ============= */
+
+/* TIMELINE - Mobile Improvements */
+@media (max-width: 768px) {
+    
+    /* Container adjustments để show peek effect */
+    .carousel-container {
+        padding: 0 40px; /* Giảm padding để show more cards */
+        overflow: visible;
+    }
+
+    .carousel-wrapper {
+        overflow: visible;
+        min-height: 550px;
+    }
+
+    .carousel-track {
+        overflow: visible;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+    /* Show active + peek of next/prev cards */
+    .carousel-item {
+        display: block !important; /* Override display: none */
+        position: relative;
+        opacity: 0.3;
+        transform: scale(0.75);
+        filter: blur(3px);
+        pointer-events: auto;
+        transition: all 0.4s ease;
+    }
+
+    .carousel-item.active {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+        z-index: 10;
+        margin: 0 10px; /* Space for peek effect */
+    }
+
+    .carousel-item.prev,
+    .carousel-item.next {
+        opacity: 0.4;
+        transform: scale(0.75) translateX(0);
+        filter: blur(2px);
+        position: absolute;
+    }
+
+    .carousel-item.prev {
+        left: -80px; /* Peek from left */
+    }
+
+    .carousel-item.next {
+        right: -80px; /* Peek from right */
+    }
+
+    .item-content {
+        width: 320px;
+    }
+
+    /* Swipe Indicator - Thêm chỉ báo vuốt */
+    .carousel-container::after {
+        content: '← Vuốt để xem thêm →';
+        display: block;
+        text-align: center;
+        color: #8c1007;
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 20px;
+        animation: fadeInOut 2s ease-in-out infinite;
+        font-family: var(--font-secondary);
+    }
+
+    @keyframes fadeInOut {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+    }
+
+    /* Dots - Làm rõ hơn trên mobile */
+    .dots-container {
+        margin-top: 30px;
+        padding: 15px;
+        background: rgba(140, 16, 7, 0.05);
+        border-radius: 20px;
+        display: inline-flex;
+        gap: 10px;
+    }
+
+    .dot {
+        width: 10px;
+        height: 10px;
+        background: #ccc;
+        position: relative;
+    }
+
+    .dot.active {
+        width: 24px;
+        background: #8c1007;
+    }
+
+    /* Counter badge */
+    .timeline-title::after {
+        content: attr(data-count);
+        display: block;
+        font-size: 14px;
+        color: #666;
+        font-weight: 400;
+        margin-top: 10px;
+    }
+}
+
+/* ACHIEVEMENT SECTION - Mobile Improvements */
+@media (max-width: 768px) {
+    
+    .achievement-carousel-container {
+        overflow: visible;
+        padding: 0 30px;
+    }
+
+    .achievement-carousel-wrapper {
+        overflow: visible;
+    }
+
+    .achievement-track {
+        overflow: visible;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    /* Show peek effect for achievement cards */
+    .achievement-card {
+        display: block !important; /* Override display: none */
+        position: relative;
+        opacity: 0.3;
+        transform: scale(0.7);
+        filter: blur(3px);
+        width: 280px;
+        height: 350px;
+    }
+
+    .achievement-card.active {
+        width: 320px;
+        height: 400px;
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+        z-index: 10;
+        margin: 0 10px;
+    }
+
+    .achievement-card.active.expanded {
+        height: 580px;
+    }
+
+    /* Position peek cards */
+    .achievement-card:not(.active) {
+        position: absolute;
+    }
+
+    .achievement-card:nth-child(1):not(.active) {
+        left: -70px;
+    }
+
+    .achievement-card:nth-last-child(1):not(.active) {
+        right: -70px;
+    }
+
+    /* Swipe Indicator for achievements */
+    .thanhtuu::after {
+        content: '← Vuốt để xem thêm →';
+        display: block;
+        text-align: center;
+        color: var(--red-color);
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 20px;
+        animation: fadeInOut 2s ease-in-out infinite;
+        font-family: var(--font-secondary);
+    }
+
+    /* Dots styling */
+    .achievement-dots {
+        margin-top: 30px;
+        padding: 15px;
+        background: rgba(140, 16, 7, 0.05);
+        border-radius: 20px;
+        display: inline-flex;
+        justify-content: center;
+        width: auto;
+    }
+
+    .achievement-dot {
+        width: 10px;
+        height: 10px;
+    }
+
+    .achievement-dot.active {
+        width: 24px;
+    }
+
+    /* Navigation arrows - Larger on mobile */
+    .nav-arrow,
+    .achievement-arrow {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-arrow.prev,
+    .achievement-arrow.prev {
+        left: 5px;
+    }
+
+    .nav-arrow.next,
+    .achievement-arrow.next {
+        right: 5px;
+    }
+}
+
+/* Touch interaction improvements */
+@media (max-width: 768px) {
+    .carousel-item,
+    .achievement-card {
+        touch-action: pan-y pinch-zoom;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .carousel-item:active:not(.active),
+    .achievement-card:active:not(.active) {
+        transform: scale(0.8);
+        opacity: 0.6;
+    }
+}
+
+/* Loading animation for cards */
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-item.active,
+    .achievement-card.active {
+        animation: slideInFromRight 0.4s ease-out;
+    }
+}
