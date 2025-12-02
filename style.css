@@ -403,16 +403,17 @@ main {
     background-color: #D1D3D4;
 }
 .content-script .gioithieu {
-    font-size: 24px;
+    font-size: 44px;
     font-family: var(--font-secondary);
     font-weight: 600;
     margin: 10px;
 }
 .content-script .intro-script {
-    max-width: 600px;
+    max-width: 1000px;
     line-height: 1.6;
     font-family: var(--font-secondary);
-    font-size: 17px;
+    font-size: 20px;
+    text-indent: 50px;
 }
 .content-script .intro-img {
     height: 400px;
@@ -420,8 +421,18 @@ main {
     border-radius: 3%;
     text-shadow: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    margin: 30px 0 0px 120px;
 }
-
+.content-script .subtitle-img{
+    font-family: var(--font-secondary);
+    font-size: 16px;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-style: italic;
+    width: 600px;
+    margin-left: 170px;
+}
 .quote {
     max-width: 1000px;
     font-family: var(--font-secondary);
@@ -438,17 +449,352 @@ main {
     justify-content: center;
 }
 @media (max-width: 768px) {
-    .content-script .intro-script{
+
+    .content-script {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 20px;
+    }
+    
+    .content-script .gioithieu {
+        font-size: 32px;
+        text-align: center;
+    }
+    
+    .content-script .intro-script {
         font-size: 16px;
-        margin-top: 30px;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 10px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
+    
     .content-script .intro-img {
-        height: 300px;
-        width: auto;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        margin: 20px auto;
+        display: block;
     }
+    
+    .content-script .subtitle-img {
+        width: 100%;
+        max-width: 400px;
+        margin: 10px auto 30px;
+        padding: 0 10px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
     .quote {
         font-size: 16px;
         font-weight: 450;
+        max-width: 100%;
+        padding: 20px 15px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .div-quote {
+        padding: 20px 15px;
+    }
+}
+
+/* ============= CHINH-UY SECTION ============= */
+.commissar-section-chinh-uy {
+    background-color: #D1D3D4;
+    padding: 60px 20px;
+    min-height: 600px;
+}
+
+.container-chinh-uy {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-chinh-uy {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header-chinh-uy h1 {
+    color: var(--red-color);
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-family: var(--font-primary);
+}
+
+.header-chinh-uy p {
+    color: #555;
+    font-size: 18px;
+    font-style: italic;
+    font-family: var(--font-secondary);
+}
+
+.carousel-container-chinh-uy {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 80px;
+}
+
+.carousel-wrapper-chinh-uy {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.carousel-track-chinh-uy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.carousel-slide-chinh-uy {
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: scale(0.7) translateX(0);
+    pointer-events: none;
+}
+
+.carousel-slide-chinh-uy.active-chinh-uy {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+    z-index: 3;
+    pointer-events: auto;
+    position: relative;
+}
+
+.carousel-slide-chinh-uy.prev-chinh-uy {
+    opacity: 0.4;
+    transform: scale(0.85) translateX(-60%);
+    z-index: 2;
+    filter: blur(2px);
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.carousel-slide-chinh-uy.next-chinh-uy {
+    opacity: 0.4;
+    transform: scale(0.85) translateX(60%);
+    z-index: 2;
+    filter: blur(2px);
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.slide-card-chinh-uy {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    width: 400px;
+    transition: all 0.3s ease;
+}
+
+.slide-card-chinh-uy:hover {
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+}
+
+.slide-image-chinh-uy {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-content-chinh-uy {
+    padding: 25px;
+    text-align: center;
+}
+
+.slide-number-chinh-uy {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--red-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 2;
+}
+
+.slide-name-chinh-uy {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--red-color);
+    margin-bottom: 10px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.slide-life-chinh-uy {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+    font-style: italic;
+    font-family: var(--font-secondary);
+}
+
+.info-item-chinh-uy {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.info-item-chinh-uy:last-child {
+    border-bottom: none;
+}
+
+.info-label-chinh-uy {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+    font-family: var(--font-secondary);
+    min-width: 100px;
+    text-align: left;
+}
+
+.info-value-chinh-uy {
+    color: #555;
+    font-size: 14px;
+    text-align: right;
+    flex: 1;
+    font-family: var(--font-secondary);
+}
+
+.rank-badge-chinh-uy {
+    display: inline-block;
+    background: var(--red-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.carousel-nav-chinh-uy {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 2px solid var(--red-color);
+    color: var(--red-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.carousel-nav-chinh-uy:hover {
+    background: var(--red-color);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-nav-chinh-uy.prev-chinh-uy {
+    left: 0;
+}
+
+.carousel-nav-chinh-uy.next-chinh-uy {
+    right: 0;
+}
+
+.carousel-indicators-chinh-uy {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.carousel-indicators-chinh-uy .indicator-chinh-uy {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators-chinh-uy .indicator-chinh-uy.active-chinh-uy {
+    background: var(--red-color);
+    width: 30px;
+    border-radius: 6px;
+}
+
+/* Responsive for chinh-uy */
+@media (max-width: 768px) {
+    .commissar-section-chinh-uy {
+        padding: 40px 15px;
+    }
+
+    .header-chinh-uy h1 {
+        font-size: 32px;
+    }
+
+    .header-chinh-uy p {
+        font-size: 16px;
+    }
+
+    .carousel-container-chinh-uy {
+        padding: 0 60px;
+    }
+
+    .carousel-wrapper-chinh-uy {
+        min-height: 450px;
+    }
+
+    .slide-card-chinh-uy {
+        width: 320px;
+    }
+
+    .slide-image-chinh-uy {
+        height: 250px;
+    }
+
+    .carousel-slide-chinh-uy.prev-chinh-uy,
+    .carousel-slide-chinh-uy.next-chinh-uy {
+        display: none;
+    }
+
+    .carousel-nav-chinh-uy {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .carousel-nav-chinh-uy.prev-chinh-uy {
+        left: -40px;
+    }
+
+    .carousel-nav-chinh-uy.next-chinh-uy {
+        right: -40px;
     }
 }
 
@@ -1551,6 +1897,12 @@ main {
             .carousel-container .nav-arrow.prev {
                 left: -40px;
             }
+            .author-details {
+                width: 300px;
+            }
+            .author-item {
+                align-items: flex-start;
+                height: auto;
+            }
         }
 
-        
