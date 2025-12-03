@@ -749,53 +749,53 @@ main {
 
 /* Responsive for chinh-uy */
 @media (max-width: 768px) {
-    .commissar-section-chinh-uy {
-        padding: 40px 15px;
-    }
+            .commissar-section-chinh-uy {
+                padding: 40px 15px;
+            }
 
-    .header-chinh-uy h1 {
-        font-size: 32px;
-    }
+            .header-chinh-uy h1 {
+                font-size: 32px;
+            }
 
-    .header-chinh-uy p {
-        font-size: 16px;
-    }
+            .header-chinh-uy p {
+                font-size: 16px;
+            }
 
-    .carousel-container-chinh-uy {
-        padding: 0 60px;
-    }
+            .carousel-container-chinh-uy {
+                padding: 0 60px;
+            }
 
-    .carousel-wrapper-chinh-uy {
-        min-height: 450px;
-    }
+            .carousel-wrapper-chinh-uy {
+                min-height: 450px;
+            }
 
-    .slide-card-chinh-uy {
-        width: 320px;
-    }
+            .slide-card-chinh-uy {
+                width: 320px;
+            }
 
-    .slide-image-chinh-uy {
-        height: 250px;
-    }
+            .slide-image-chinh-uy {
+                height: 250px;
+            }
 
-    .carousel-slide-chinh-uy.prev-chinh-uy,
-    .carousel-slide-chinh-uy.next-chinh-uy {
-        display: none;
-    }
+            .carousel-slide-chinh-uy.prev-chinh-uy,
+            .carousel-slide-chinh-uy.next-chinh-uy {
+                display: none;
+            }
 
-    .carousel-nav-chinh-uy {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
+            .carousel-nav-chinh-uy {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
 
-    .carousel-nav-chinh-uy.prev-chinh-uy {
-        left: -40px;
-    }
+            .carousel-nav-chinh-uy.prev-chinh-uy {
+                left: 10px;
+            }
 
-    .carousel-nav-chinh-uy.next-chinh-uy {
-        right: -40px;
-    }
-}
+            .carousel-nav-chinh-uy.next-chinh-uy {
+                right: 10px;
+            }
+        }
 
 /* timeline */
 
