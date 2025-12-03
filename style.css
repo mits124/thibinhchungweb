@@ -465,8 +465,7 @@ main {
         max-width: 100%;
         margin: 0;
         padding: 0 5px;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
+        
         text-align: justify ;
     }
     
