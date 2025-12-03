@@ -457,7 +457,7 @@ main {
     
     .content-script .gioithieu {
         font-size: 32px;
-        text-align: center;
+        text-align: justify;
     }
     
     .content-script .intro-script {
