@@ -94,35 +94,42 @@ initSmoothScroll();
 document.addEventListener('DOMContentLoaded', function() {
     const openBtn = document.getElementById('openVideo');
     const videoOverlay = document.getElementById('videoOverlay');
-    const video = document.getElementById('video');
     const closeVideoBtn = document.getElementById('closeVideoBtn');
+    const iframe = document.getElementById('videoFrame');
 
     if (!openBtn || !videoOverlay) return;
 
+    // Mở video
     openBtn.addEventListener('click', function() {
         videoOverlay.classList.add('active');
-        video.play();
+        videoOverlay.style.display = 'flex';
     });
 
+    // Đóng video
     closeVideoBtn.addEventListener('click', function() {
         videoOverlay.classList.remove('active');
-        video.pause();
-        video.currentTime = 0;
+        videoOverlay.style.display = 'none';
+        // Dừng video bằng cách reload iframe
+        iframe.src = iframe.src;
     });
 
+    // Đóng khi click ngoài video
     videoOverlay.addEventListener('click', function(e) {
         if (e.target === videoOverlay) {
             videoOverlay.classList.remove('active');
-            video.pause();
-            video.currentTime = 0;
+            videoOverlay.style.display = 'none';
+            // Dừng video bằng cách reload iframe
+            iframe.src = iframe.src;
         }
     });
 
+    // Đóng bằng phím Escape
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && videoOverlay.classList.contains('active')) {
             videoOverlay.classList.remove('active');
-            video.pause();
-            video.currentTime = 0;
+            videoOverlay.style.display = 'none';
+            // Dừng video bằng cách reload iframe
+            iframe.src = iframe.src;
         }
     });
 });

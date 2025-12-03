@@ -79,18 +79,23 @@
             </nav>
         
             <!-- nút mở video -->
-            <nav class="video">
-                <button class="openvideo" id="openVideo">Xem Video Giới Thiệu</button>
+                <nav class="video">
+                    <button class="openvideo" id="openVideo">Xem Video Giới Thiệu</button>
                     <div class="video-overlay" id="videoOverlay">
                         <div class="video-container">
                             <button class="close-button" id="closeVideoBtn">&times;</button>
-                            <video controls width="100%" style="max-width: 800px;">
-                                <source src="https://drive.google.com/uc?export=download&id=1LWg8BWusRhkphd2UE77LgmNwGv12kzpg" type="video/mp4">
-                                Trình duyệt của bạn không hỗ trợ video.
-                            </video>
+                            <iframe 
+                                id="videoFrame"
+                                src="https://drive.google.com/file/d/1LWg8BWusRhkphd2UE77LgmNwGv12kzpg/preview" 
+                                width="100%" 
+                                height="480" 
+                                allow="autoplay"
+                                allowfullscreen
+                                style="border: none; max-width: 800px;">
+                            </iframe>
                         </div>
                     </div>
-            </nav>
+                </nav>
         </div>
     <section id="gioi-thieu">
         <section class="author-section">
