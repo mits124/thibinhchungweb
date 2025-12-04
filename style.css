@@ -498,26 +498,519 @@ main {
     .div-quote {
         padding: 20px 15px;
     }
+    .author-item .elo {
+        margin: 0;
+    }
+    .author-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .author-info {
+        margin-top: 10px;
+    }
 }
-
 /* ============= CHINH-UY SECTION ============= */
 .commissar-section-chinh-uy {
+            background-color: #D1D3D4;
+            padding: 60px 20px;
+            min-height: 600px;
+        }
+
+        .container-chinh-uy {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header-chinh-uy {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header-chinh-uy h1 {
+            color: var(--red-color);
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: var(--font-primary);
+        }
+
+        .header-chinh-uy p {
+            color: #555;
+            font-size: 18px;
+            font-style: italic;
+            font-family: var(--font-secondary);
+        }
+
+        .carousel-container-chinh-uy {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+
+        .carousel-wrapper-chinh-uy {
+            position: relative;
+            width: 100%;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .carousel-track-chinh-uy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            gap: 20px;
+        }
+
+        .carousel-slide-chinh-uy {
+            position: absolute;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: scale(0.7) translateX(0);
+            pointer-events: none;
+        }
+
+        .carousel-slide-chinh-uy.active-chinh-uy {
+            opacity: 1;
+            transform: scale(1) translateX(0);
+            z-index: 3;
+            pointer-events: auto;
+            position: relative;
+        }
+
+        .carousel-slide-chinh-uy.prev-chinh-uy {
+            opacity: 0.4;
+            transform: scale(0.85) translateX(-60%);
+            z-index: 2;
+            filter: blur(2px);
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .carousel-slide-chinh-uy.next-chinh-uy {
+            opacity: 0.4;
+            transform: scale(0.85) translateX(60%);
+            z-index: 2;
+            filter: blur(2px);
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+        .slide-card-chinh-uy {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            width: 400px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .slide-card-chinh-uy:hover {
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+        .slide-image-chinh-uy {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-content-chinh-uy {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .slide-number-chinh-uy {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--red-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            z-index: 2;
+        }
+
+        .slide-name-chinh-uy {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--red-color);
+            margin-bottom: 10px;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .slide-life-chinh-uy {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            font-style: italic;
+            font-family: var(--font-secondary);
+        }
+
+        .info-item-chinh-uy {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-item-chinh-uy:last-child {
+            border-bottom: none;
+        }
+
+        .info-label-chinh-uy {
+            font-weight: 600;
+            color: #333;
+            font-size: 14px;
+            font-family: var(--font-secondary);
+            min-width: 100px;
+            text-align: left;
+        }
+
+        .info-value-chinh-uy {
+            color: #555;
+            font-size: 14px;
+            text-align: right;
+            flex: 1;
+            font-family: var(--font-secondary);
+        }
+
+        .rank-badge-chinh-uy {
+            display: inline-block;
+            background: var(--red-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .carousel-nav-chinh-uy {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border: 2px solid var(--red-color);
+            color: var(--red-color);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .carousel-nav-chinh-uy:hover {
+            background: var(--red-color);
+            color: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-nav-chinh-uy.prev-chinh-uy {
+            left: 0;
+        }
+
+        .carousel-nav-chinh-uy.next-chinh-uy {
+            right: 0;
+        }
+
+        .carousel-indicators-chinh-uy {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .carousel-indicators-chinh-uy .indicator-chinh-uy {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicators-chinh-uy .indicator-chinh-uy.active-chinh-uy {
+            background: var(--red-color);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Responsive for chinh-uy */
+@media (max-width: 1200px) {
+    .carousel-track-chinh-uy {
+        gap: 15px;
+    }
+
+    .slide-card-chinh-uy {
+        width: 320px;
+    }
+
+    .slide-image-chinh-uy {
+        height: 280px;
+    }
+
+    .carousel-slide-chinh-uy.active-chinh-uy .slide-card-chinh-uy {
+        width: 380px;
+    }
+
+    .carousel-slide-chinh-uy.active-chinh-uy .slide-image-chinh-uy {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+        .carousel-container-chinh-uy {
+        padding: 0 5px !important;
+    }
+    .header-chinh-uy h1{
+        font-size: 36px; ;
+    }
+
+    .carousel-wrapper-chinh-uy {
+        min-height: 580px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* ===== ẨN CARDS BÊN CẠNH ===== */
+    .carousel-slide-chinh-uy:not(.active-chinh-uy) {
+        display: none !important;
+    }
+
+    .carousel-slide-chinh-uy.active-chinh-uy {
+        position: relative !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    /* ===== FIX CARD SHAPE ===== */
+    .slide-card-chinh-uy {
+        width: 100% !important;
+        max-width: 320px !important;
+        min-height: 520px !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+        background: white !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15) !important;
+    }
+
+    /* ===== ẢNH CỐ ĐỊNH ===== */
+    .slide-image-chinh-uy {
+        width: 100% !important;
+        height: 260px !important;
+        object-fit: cover !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* ===== CONTENT AREA ===== */
+    .slide-content-chinh-uy {
+        padding: 18px 15px !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        position: relative !important;
+        width: 350px !important;
+    }
+
+    .slide-number-chinh-uy {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 14px !important;
+        top: 10px !important;
+        right: 10px !important;
+    }
+
+    /* ===== TÊN ===== */
+    .slide-name-chinh-uy {
+        font-size: 19px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 6px !important;
+        margin-top: 0 !important;
+    }
+
+    /* ===== NĂM SINH ===== */
+    .slide-life-chinh-uy {
+        font-size: 17px !important;
+        margin-bottom: 15px !important;
+        margin-top: 0 !important;
+    }
+
+    /* ===== INFO ITEMS - LAYOUT DỌC ===== */
+    .info-item-chinh-uy {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 3px !important;
+        padding: 8px 0 !important;
+        margin-bottom: 6px !important;
+        border-bottom: 1px solid #eee !important;
+    }
+
+    .info-item-chinh-uy:last-child {
+        border-bottom: none !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* ===== LABEL ===== */
+    .info-label-chinh-uy {
+        width: 100% !important;
+        min-width: auto !important;
+        text-align: left !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: #333 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1.3 !important;
+    }
+
+    /* ===== VALUE - FIX CHỒNG CHỮ ===== */
+    .info-value-chinh-uy {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: left !important;
+        font-size: 15px !important;
+        line-height: 1.4 !important;
+        color: #555 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        
+        /* KHÔNG CHO CHỮ CHỒNG */
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        white-space: normal !important;
+        display: block !important;
+    }
+
+    /* ===== BADGE ===== */
+    .rank-badge-chinh-uy {
+        font-size: 15px !important;
+        padding: 3px 7px !important;
+        display: inline-block !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .carousel-nav-chinh-uy {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 18px !important;
+    }
+
+    .carousel-nav-chinh-uy.prev-chinh-uy {
+        left: 5px !important;
+    }
+
+    .carousel-nav-chinh-uy.next-chinh-uy {
+        right: 5px !important;
+    }
+
+    /* ===== INDICATORS ===== */
+    .carousel-indicators-chinh-uy {
+        margin-top: 20px !important;
+    }
+}
+
+
+/* Media cho màn hình rất nhỏ */
+@media (max-width: 375px) {
+    .header-chinh-uy h1 {
+        font-size: 24px;
+    }
+
+    .carousel-container-chinh-uy {
+        padding: 0 40px;
+    }
+
+    .slide-card-chinh-uy {
+        width: 260px;
+    }
+
+    .slide-image-chinh-uy {
+        height: 180px;
+    }
+
+    .slide-content-chinh-uy {
+        padding: 15px 10px;
+    }
+
+    .slide-name-chinh-uy {
+        font-size: 16px;
+    }
+
+    .info-label-chinh-uy,
+    .info-value-chinh-uy {
+        font-size: 11px;
+    }
+
+    .rank-badge-chinh-uy {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+
+    .carousel-nav-chinh-uy {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .slide-number-chinh-uy {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+    }
+}
+
+/* tư lệnh */
+
+/* ============= TƯ LỆNH SECTION ============= */
+.commissar-section-tu-lenh {
     background-color: #D1D3D4;
     padding: 60px 20px;
     min-height: 600px;
 }
 
-.container-chinh-uy {
+.container-tu-lenh {
     max-width: 1400px;
     margin: 0 auto;
 }
 
-.header-chinh-uy {
+.header-tu-lenh {
     text-align: center;
     margin-bottom: 50px;
 }
 
-.header-chinh-uy h1 {
+.header-tu-lenh h1 {
     color: var(--red-color);
     font-size: 42px;
     font-weight: 700;
@@ -525,21 +1018,21 @@ main {
     font-family: var(--font-primary);
 }
 
-.header-chinh-uy p {
+.header-tu-lenh p {
     color: #555;
     font-size: 18px;
     font-style: italic;
     font-family: var(--font-secondary);
 }
 
-.carousel-container-chinh-uy {
+.carousel-container-tu-lenh {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 80px;
 }
 
-.carousel-wrapper-chinh-uy {
+.carousel-wrapper-tu-lenh {
     position: relative;
     width: 100%;
     min-height: 500px;
@@ -549,7 +1042,7 @@ main {
     overflow: hidden;
 }
 
-.carousel-track-chinh-uy {
+.carousel-track-tu-lenh {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -559,7 +1052,7 @@ main {
     gap: 20px;
 }
 
-.carousel-slide-chinh-uy {
+.carousel-slide-tu-lenh {
     position: absolute;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
@@ -567,7 +1060,7 @@ main {
     pointer-events: none;
 }
 
-.carousel-slide-chinh-uy.active-chinh-uy {
+.carousel-slide-tu-lenh.active-tu-lenh {
     opacity: 1;
     transform: scale(1) translateX(0);
     z-index: 3;
@@ -575,7 +1068,7 @@ main {
     position: relative;
 }
 
-.carousel-slide-chinh-uy.prev-chinh-uy {
+.carousel-slide-tu-lenh.prev-tu-lenh {
     opacity: 0.4;
     transform: scale(0.85) translateX(-60%);
     z-index: 2;
@@ -584,7 +1077,7 @@ main {
     cursor: pointer;
 }
 
-.carousel-slide-chinh-uy.next-chinh-uy {
+.carousel-slide-tu-lenh.next-tu-lenh {
     opacity: 0.4;
     transform: scale(0.85) translateX(60%);
     z-index: 2;
@@ -593,32 +1086,33 @@ main {
     cursor: pointer;
 }
 
-.slide-card-chinh-uy {
+.slide-card-tu-lenh {
     background: white;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    width: 400px;
+    width: 350px;
     transition: all 0.3s ease;
+    position: relative;
 }
 
-.slide-card-chinh-uy:hover {
+.slide-card-tu-lenh:hover {
     box-shadow: 0 15px 50px rgba(0,0,0,0.2);
 }
 
-.slide-image-chinh-uy {
+.slide-image-tu-lenh {
     width: 100%;
     height: 300px;
     object-fit: cover;
     display: block;
 }
 
-.slide-content-chinh-uy {
+.slide-content-tu-lenh {
     padding: 25px;
     text-align: center;
 }
 
-.slide-number-chinh-uy {
+.slide-number-tu-lenh {
     position: absolute;
     top: 15px;
     right: 15px;
@@ -635,7 +1129,7 @@ main {
     z-index: 2;
 }
 
-.slide-name-chinh-uy {
+.slide-name-tu-lenh {
     font-size: 22px;
     font-weight: 700;
     color: var(--red-color);
@@ -643,7 +1137,7 @@ main {
     font-family: 'Be Vietnam Pro', sans-serif;
 }
 
-.slide-life-chinh-uy {
+.slide-life-tu-lenh {
     font-size: 14px;
     color: #666;
     margin-bottom: 15px;
@@ -651,7 +1145,7 @@ main {
     font-family: var(--font-secondary);
 }
 
-.info-item-chinh-uy {
+.info-item-tu-lenh {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -660,11 +1154,11 @@ main {
     border-bottom: 1px solid #eee;
 }
 
-.info-item-chinh-uy:last-child {
+.info-item-tu-lenh:last-child {
     border-bottom: none;
 }
 
-.info-label-chinh-uy {
+.info-label-tu-lenh {
     font-weight: 600;
     color: #333;
     font-size: 14px;
@@ -673,7 +1167,7 @@ main {
     text-align: left;
 }
 
-.info-value-chinh-uy {
+.info-value-tu-lenh {
     color: #555;
     font-size: 14px;
     text-align: right;
@@ -681,7 +1175,7 @@ main {
     font-family: var(--font-secondary);
 }
 
-.rank-badge-chinh-uy {
+.rank-badge-tu-lenh {
     display: inline-block;
     background: var(--red-color);
     color: white;
@@ -691,7 +1185,7 @@ main {
     font-weight: 600;
 }
 
-.carousel-nav-chinh-uy {
+.carousel-nav-tu-lenh {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -711,28 +1205,28 @@ main {
     font-weight: bold;
 }
 
-.carousel-nav-chinh-uy:hover {
+.carousel-nav-tu-lenh:hover {
     background: var(--red-color);
     color: white;
     transform: translateY(-50%) scale(1.1);
 }
 
-.carousel-nav-chinh-uy.prev-chinh-uy {
-    left: 0;
+.carousel-nav-tu-lenh.prev-tu-lenh {
+    left: -25px;
 }
 
-.carousel-nav-chinh-uy.next-chinh-uy {
-    right: 0;
+.carousel-nav-tu-lenh.next-tu-lenh {
+    right: -25px;
 }
 
-.carousel-indicators-chinh-uy {
+.carousel-indicators-tu-lenh {
     display: flex;
     justify-content: center;
     gap: 12px;
     margin-top: 30px;
 }
 
-.carousel-indicators-chinh-uy .indicator-chinh-uy {
+.carousel-indicators-tu-lenh .indicator-tu-lenh {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -741,62 +1235,246 @@ main {
     transition: all 0.3s ease;
 }
 
-.carousel-indicators-chinh-uy .indicator-chinh-uy.active-chinh-uy {
+.carousel-indicators-tu-lenh .indicator-tu-lenh.active-tu-lenh {
     background: var(--red-color);
     width: 30px;
     border-radius: 6px;
 }
 
-/* Responsive for chinh-uy */
+/* Responsive for tu-lenh */
+@media (max-width: 1200px) {
+    .carousel-track-tu-lenh {
+        gap: 15px;
+    }
+
+    .slide-card-tu-lenh {
+        width: 300px;
+    }
+
+    .slide-image-tu-lenh {
+        height: 280px;
+    }
+
+    .carousel-slide-tu-lenh.active-tu-lenh .slide-card-tu-lenh {
+        width: 350px;
+    }
+
+    .carousel-slide-tu-lenh.active-tu-lenh .slide-image-tu-lenh {
+        height: 300px;
+    }
+}
+
 @media (max-width: 768px) {
-            .commissar-section-chinh-uy {
-                padding: 40px 15px;
-            }
+    .carousel-container-tu-lenh {
+        padding: 0 10px !important;
+    }
 
-            .header-chinh-uy h1 {
-                font-size: 32px;
-            }
+    .carousel-wrapper-tu-lenh {
+        min-height: 580px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .slide-content-tu-lenh {
+        width: 350px !important;
+    }
 
-            .header-chinh-uy p {
-                font-size: 16px;
-            }
+    /* ===== ẨN CARDS BÊN CẠNH ===== */
+    .carousel-slide-tu-lenh:not(.active-tu-lenh) {
+        display: none !important;
+    }
 
-            .carousel-container-chinh-uy {
-                padding: 0 60px;
-            }
+    .carousel-slide-tu-lenh.active-tu-lenh {
+        position: relative !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
 
-            .carousel-wrapper-chinh-uy {
-                min-height: 450px;
-            }
+    /* ===== FIX CARD SHAPE ===== */
+    .slide-card-tu-lenh {
+        width: 100% !important;
+        max-width: 320px !important;
+        min-height: 520px !important;
+        height: auto !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+        background: white !important;
+        border-radius: 16px !important;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15) !important;
+    }
 
-            .slide-card-chinh-uy {
-                width: 320px;
-            }
+    /* ===== ẢNH CỐ ĐỊNH ===== */
+    .slide-image-tu-lenh {
+        width: 100% !important;
+        height: 260px !important;
+        object-fit: cover !important;
+        flex-shrink: 0 !important;
+    }
 
-            .slide-image-chinh-uy {
-                height: 250px;
-            }
+    /* ===== CONTENT AREA ===== */
+    .slide-content-tu-lenh {
+        padding: 18px 15px !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        position: relative !important;
+    }
 
-            .carousel-slide-chinh-uy.prev-chinh-uy,
-            .carousel-slide-chinh-uy.next-chinh-uy {
-                display: none;
-            }
+    .slide-number-tu-lenh {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 14px !important;
+        top: 10px !important;
+        right: 10px !important;
+    }
 
-            .carousel-nav-chinh-uy {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
-            }
+    /* ===== TÊN ===== */
+    .slide-name-tu-lenh {
+        font-size: 19px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 6px !important;
+        margin-top: 0 !important;
+    }
 
-            .carousel-nav-chinh-uy.prev-chinh-uy {
-                left: 10px;
-            }
+    /* ===== NĂM SINH ===== */
+    .slide-life-tu-lenh {
+        font-size: 17px !important;
+        margin-bottom: 15px !important;
+        margin-top: 0 !important;
+    }
 
-            .carousel-nav-chinh-uy.next-chinh-uy {
-                right: 10px;
-            }
-        }
+    /* ===== INFO ITEMS - LAYOUT DỌC ===== */
+    .info-item-tu-lenh {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 3px !important;
+        padding: 8px 0 !important;
+        margin-bottom: 6px !important;
+        border-bottom: 1px solid #eee !important;
+    }
 
+    .info-item-tu-lenh:last-child {
+        border-bottom: none !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* ===== LABEL ===== */
+    .info-label-tu-lenh {
+        width: 100% !important;
+        min-width: auto !important;
+        text-align: left !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: #333 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        line-height: 1.3 !important;
+    }
+
+    /* ===== VALUE - FIX CHỒNG CHỮ ===== */
+    .info-value-tu-lenh {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: left !important;
+        font-size: 15px !important;
+        line-height: 1.4 !important;
+        color: #555 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        
+        /* KHÔNG CHO CHỮ CHỒNG */
+        word-wrap: break-word !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        white-space: normal !important;
+        display: block !important;
+    }
+
+    /* ===== BADGE ===== */
+    .rank-badge-tu-lenh {
+        font-size: 15px !important;
+        padding: 3px 7px !important;
+        display: inline-block !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .carousel-nav-tu-lenh {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 18px !important;
+    }
+
+    .carousel-nav-tu-lenh.prev-tu-lenh {
+        left: 5px !important;
+    }
+
+    .carousel-nav-tu-lenh.next-tu-lenh {
+        right: 5px !important;
+    }
+
+    /* ===== INDICATORS ===== */
+    .carousel-indicators-tu-lenh {
+        margin-top: 20px !important;
+    }
+    .header-tu-lenh h1{
+        font-size: 36px; ;
+    }
+}
+
+/* Media cho màn hình rất nhỏ */
+@media (max-width: 375px) {
+    .header-tu-lenh h1 {
+        font-size: 24px;
+    }
+
+    .carousel-container-tu-lenh {
+        padding: 0 40px;
+    }
+
+    .slide-card-tu-lenh {
+        width: 260px;
+    }
+
+    .slide-image-tu-lenh {
+        height: 180px;
+    }
+
+    .slide-content-tu-lenh {
+        padding: 15px 10px;
+    }
+
+    .slide-name-tu-lenh {
+        font-size: 16px;
+    }
+
+    .info-label-tu-lenh,
+    .info-value-tu-lenh {
+        font-size: 11px;
+    }
+
+    .rank-badge-tu-lenh {
+        font-size: 9px;
+        padding: 2px 6px;
+    }
+
+    .carousel-nav-tu-lenh {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+
+    .slide-number-tu-lenh {
+        width: 28px;
+        height: 28px;
+        font-size: 13px;
+    }
+}
 /* timeline */
 
 .timeline-title {

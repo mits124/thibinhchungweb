@@ -362,60 +362,168 @@ if (achievementSection) {
     updateAchievementCarousel();
 }
 
+
 // ============= CHINH-UY CAROUSEL =============
-const chinhUySection = document.querySelector('.commissar-section-chinh-uy');
-if (chinhUySection) {
-    const slides = chinhUySection.querySelectorAll('.carousel-slide-chinh-uy');
-    const track = chinhUySection.querySelector('.carousel-track-chinh-uy');
-    const indicatorsContainer = chinhUySection.querySelector('.carousel-indicators-chinh-uy');
-    const prevBtn = chinhUySection.querySelector('.prev-chinh-uy');
-    const nextBtn = chinhUySection.querySelector('.next-chinh-uy');
+    const chinhUySection = document.querySelector('.commissar-section-chinh-uy');
+    if (chinhUySection) {
+        const slides = chinhUySection.querySelectorAll('.carousel-slide-chinh-uy');
+        const track = chinhUySection.querySelector('.carousel-track-chinh-uy');
+        const indicatorsContainer = chinhUySection.querySelector('.carousel-indicators-chinh-uy');
+        const prevBtn = chinhUySection.querySelector('.prev-chinh-uy');
+        const nextBtn = chinhUySection.querySelector('.next-chinh-uy');
+        let currentSlideIndex = 0;
+
+        // Create indicators
+        if (indicatorsContainer) {
+            slides.forEach((_, index) => {
+                const indicator = document.createElement('span');
+                indicator.className = 'indicator-chinh-uy';
+                if (index === 0) indicator.classList.add('active-chinh-uy');
+                indicator.addEventListener('click', () => {
+                    currentSlideIndex = index;
+                    updateChinhUyCarousel();
+                });
+                indicatorsContainer.appendChild(indicator);
+            });
+        }
+
+        function updateChinhUyCarousel() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active-chinh-uy', 'prev-chinh-uy', 'next-chinh-uy');
+                
+                if (index === currentSlideIndex) {
+                    slide.classList.add('active-chinh-uy');
+                } else if (index === currentSlideIndex - 1 || (currentSlideIndex === 0 && index === slides.length - 1)) {
+                    slide.classList.add('prev-chinh-uy');
+                } else if (index === currentSlideIndex + 1 || (currentSlideIndex === slides.length - 1 && index === 0)) {
+                    slide.classList.add('next-chinh-uy');
+                }
+            });
+
+            // Update indicators
+            if (indicatorsContainer) {
+                const indicators = indicatorsContainer.querySelectorAll('.indicator-chinh-uy');
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active-chinh-uy', index === currentSlideIndex);
+                });
+            }
+        }
+
+        function nextSlideChinhUy() {
+            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+            updateChinhUyCarousel();
+        }
+
+        function prevSlideChinhUy() {
+            currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+            updateChinhUyCarousel();
+        }
+
+        // Add event listeners to navigation buttons
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                prevSlideChinhUy();
+            });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                nextSlideChinhUy();
+            });
+        }
+
+        // Click on side slides
+        slides.forEach((slide) => {
+            slide.addEventListener('click', (e) => {
+                if (slide.classList.contains('active-chinh-uy')) {
+                    return;
+                }
+                
+                if (slide.classList.contains('prev-chinh-uy')) {
+                    e.stopPropagation();
+                    prevSlideChinhUy();
+                }
+                
+                if (slide.classList.contains('next-chinh-uy')) {
+                    e.stopPropagation();
+                    nextSlideChinhUy();
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (chinhUySection.getBoundingClientRect().top < window.innerHeight && 
+                chinhUySection.getBoundingClientRect().bottom > 0) {
+                if (e.key === 'ArrowLeft') {
+                    prevSlideChinhUy();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlideChinhUy();
+                }
+            }
+        });
+
+        // Initialize
+        updateChinhUyCarousel();
+    }
+
+    // ============= TƯ LỆNH CAROUSEL =============
+const tuLenhSection = document.querySelector('.commissar-section-tu-lenh');
+if (tuLenhSection) {
+    const slides = tuLenhSection.querySelectorAll('.carousel-slide-tu-lenh');
+    const track = tuLenhSection.querySelector('.carousel-track-tu-lenh');
+    const indicatorsContainer = tuLenhSection.querySelector('.carousel-indicators-tu-lenh');
+    const prevBtn = tuLenhSection.querySelector('.prev-tu-lenh');
+    const nextBtn = tuLenhSection.querySelector('.next-tu-lenh');
     let currentSlideIndex = 0;
 
     // Create indicators
     if (indicatorsContainer) {
         slides.forEach((_, index) => {
             const indicator = document.createElement('span');
-            indicator.className = 'indicator-chinh-uy';
-            if (index === 0) indicator.classList.add('active-chinh-uy');
+            indicator.className = 'indicator-tu-lenh';
+            if (index === 0) indicator.classList.add('active-tu-lenh');
             indicator.addEventListener('click', () => {
                 currentSlideIndex = index;
-                updateChinhUyCarousel();
+                updateTuLenhCarousel();
             });
             indicatorsContainer.appendChild(indicator);
         });
     }
 
-    function updateChinhUyCarousel() {
+    function updateTuLenhCarousel() {
         slides.forEach((slide, index) => {
-            slide.classList.remove('active-chinh-uy', 'prev-chinh-uy', 'next-chinh-uy');
+            slide.classList.remove('active-tu-lenh', 'prev-tu-lenh', 'next-tu-lenh');
             
             if (index === currentSlideIndex) {
-                slide.classList.add('active-chinh-uy');
+                slide.classList.add('active-tu-lenh');
             } else if (index === currentSlideIndex - 1 || (currentSlideIndex === 0 && index === slides.length - 1)) {
-                slide.classList.add('prev-chinh-uy');
+                slide.classList.add('prev-tu-lenh');
             } else if (index === currentSlideIndex + 1 || (currentSlideIndex === slides.length - 1 && index === 0)) {
-                slide.classList.add('next-chinh-uy');
+                slide.classList.add('next-tu-lenh');
             }
         });
 
         // Update indicators
         if (indicatorsContainer) {
-            const indicators = indicatorsContainer.querySelectorAll('.indicator-chinh-uy');
+            const indicators = indicatorsContainer.querySelectorAll('.indicator-tu-lenh');
             indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active-chinh-uy', index === currentSlideIndex);
+                indicator.classList.toggle('active-tu-lenh', index === currentSlideIndex);
             });
         }
     }
 
-    function nextSlideChinhUy() {
+    function nextSlideTuLenh() {
         currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-        updateChinhUyCarousel();
+        updateTuLenhCarousel();
     }
 
-    function prevSlideChinhUy() {
+    function prevSlideTuLenh() {
         currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-        updateChinhUyCarousel();
+        updateTuLenhCarousel();
     }
 
     // Add event listeners to navigation buttons
@@ -423,50 +531,50 @@ if (chinhUySection) {
         prevBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            prevSlideChinhUy();
+            prevSlideTuLenh();
         });
     }
     if (nextBtn) {
         nextBtn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-            nextSlideChinhUy();
+            nextSlideTuLenh();
         });
     }
 
     // Click on side slides
     slides.forEach((slide) => {
         slide.addEventListener('click', (e) => {
-            if (slide.classList.contains('active-chinh-uy')) {
+            if (slide.classList.contains('active-tu-lenh')) {
                 return;
             }
             
-            if (slide.classList.contains('prev-chinh-uy')) {
+            if (slide.classList.contains('prev-tu-lenh')) {
                 e.stopPropagation();
-                prevSlideChinhUy();
+                prevSlideTuLenh();
             }
             
-            if (slide.classList.contains('next-chinh-uy')) {
+            if (slide.classList.contains('next-tu-lenh')) {
                 e.stopPropagation();
-                nextSlideChinhUy();
+                nextSlideTuLenh();
             }
         });
     });
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-        if (chinhUySection.getBoundingClientRect().top < window.innerHeight && 
-            chinhUySection.getBoundingClientRect().bottom > 0) {
+        if (tuLenhSection.getBoundingClientRect().top < window.innerHeight && 
+            tuLenhSection.getBoundingClientRect().bottom > 0) {
             if (e.key === 'ArrowLeft') {
-                prevSlideChinhUy();
+                prevSlideTuLenh();
             } else if (e.key === 'ArrowRight') {
-                nextSlideChinhUy();
+                nextSlideTuLenh();
             }
         }
     });
 
     // Initialize
-    updateChinhUyCarousel();
+    updateTuLenhCarousel();
 }
 
 // ============= CHUYỂN ĐỔI SỐ =============
