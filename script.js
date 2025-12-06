@@ -135,232 +135,24 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ============= TIMELINE CAROUSEL =============
-const timelineSection = document.querySelector('#time-line');
-if (timelineSection) {
-    const items = timelineSection.querySelectorAll('.carousel-item');
-    const dots = timelineSection.querySelectorAll('.dot');
-    const prevBtn = timelineSection.querySelector('.nav-arrow.prev');
-    const nextBtn = timelineSection.querySelector('.nav-arrow.next');
-    const wrapper = timelineSection.querySelector('.carousel-wrapper');
-    let currentIndex = 0;
-
-    function updateCarousel() {
-        items.forEach((item, index) => {
-            item.classList.remove('active', 'prev', 'next');
+function toggleDetails(btn) {
+            const card = btn.closest('.era-card');
+            const spanText = btn.firstChild; // The text node
             
-            const description = item.querySelector('.item-description');
-            const btn = item.querySelector('.view-more-btn');
-            if (description && description.classList.contains('show')) {
-                description.classList.remove('show');
-                btn.textContent = 'Xem thêm';
-                btn.classList.remove('active');
-                wrapper.classList.remove('expanded');
-            }
-            
-            if (index === currentIndex) {
-                item.classList.add('active');
-            } else if (index === currentIndex - 1 || (currentIndex === 0 && index === items.length - 1)) {
-                item.classList.add('prev');
-            } else if (index === currentIndex + 1 || (currentIndex === items.length - 1 && index === 0)) {
-                item.classList.add('next');
-            }
-        });
-
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % items.length;
-        updateCarousel();
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + items.length) % items.length;
-        updateCarousel();
-    }
-
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateCarousel();
-        });
-    });
-
-    // View more buttons - CHỈ cho timeline
-    timelineSection.querySelectorAll('.view-more-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const description = btn.nextElementSibling;
-            const isExpanding = !description.classList.contains('show');
-            
-            description.classList.toggle('show');
-            btn.textContent = description.classList.contains('show') ? 'Thu gọn' : 'Xem thêm';
-            btn.classList.toggle('active');
-            
-            if (isExpanding) {
-                wrapper.classList.add('expanded');
+            // Toggle active class
+            if (card.classList.contains('active')) {
+                card.classList.remove('active');
+                // Use innerHTML to preserve the chevron span
+                btn.innerHTML = 'Xem chi tiết <span class="chevron">▼</span>';
+                btn.style.backgroundColor = "transparent";
+                btn.style.color = "#8c1007";
             } else {
-                wrapper.classList.remove('expanded');
-            }
-        });
-    });
-
-    // Click on side items
-    items.forEach((item) => {
-        item.addEventListener('click', (e) => {
-            if (item.classList.contains('active')) {
-                return;
-            }
-            
-            if (item.classList.contains('prev')) {
-                e.stopPropagation();
-                prevSlide();
-            }
-            
-            if (item.classList.contains('next')) {
-                e.stopPropagation();
-                nextSlide();
-            }
-        });
-        
-        item.addEventListener('mouseenter', () => {
-            if (item.classList.contains('prev') || item.classList.contains('next')) {
-                item.style.cursor = 'pointer';
-            }
-        });
-    });
-
-    // Click outside to close
-    document.addEventListener('click', (e) => {
-        const activeItem = timelineSection.querySelector('.carousel-item.active');
-        if (activeItem && !activeItem.contains(e.target) && !e.target.closest('.nav-arrow')) {
-            const description = activeItem.querySelector('.item-description');
-            const btn = activeItem.querySelector('.view-more-btn');
-            
-            if (description && description.classList.contains('show')) {
-                description.classList.remove('show');
-                btn.textContent = 'Xem thêm';
-                btn.classList.remove('active');
-                wrapper.classList.remove('expanded');
-            }
-        }
-    });
-
-
-
-    updateCarousel();
-}
-
-// ============= THÀNH TỰU CAROUSEL =============
-const achievementSection = document.querySelector('#thanh-tuu');
-if (achievementSection) {
-    const achievementCards = achievementSection.querySelectorAll('.achievement-card');
-    const achievementDots = achievementSection.querySelectorAll('.achievement-dot');
-    const achievementWrapper = achievementSection.querySelector('.achievement-carousel-wrapper');
-    const prevArrow = achievementSection.querySelector('.achievement-arrow.prev');
-    const nextArrow = achievementSection.querySelector('.achievement-arrow.next');
-    let currentAchievementIndex = 0;
-
-    function updateAchievementCarousel() {
-        achievementCards.forEach((card, index) => {
-            card.classList.remove('active');
-            if (index === currentAchievementIndex) {
                 card.classList.add('active');
+                btn.innerHTML = 'Thu gọn <span class="chevron">▲</span>';
+                btn.style.backgroundColor = "#8c1007";
+                btn.style.color = "white";
             }
-        });
-
-        achievementDots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentAchievementIndex);
-        });
-    }
-
-    function closeAchievementDescription(card) {
-        const description = card.querySelector('.achievement-description');
-        const btn = card.querySelector('.view-more-btn');
-        if (description && description.classList.contains('show')) {
-            description.classList.remove('show');
-            btn.textContent = 'Xem thêm';
-            btn.classList.remove('active');
-            card.classList.remove('expanded');
-            achievementWrapper.classList.remove('expanded');
         }
-    }
-
-    // Click on cards
-    achievementCards.forEach((card, index) => {
-        card.addEventListener('click', () => {
-            if (currentAchievementIndex !== index) {
-                closeAchievementDescription(achievementCards[currentAchievementIndex]);
-                currentAchievementIndex = index;
-                updateAchievementCarousel();
-            }
-        });
-    });
-
-    // Arrow navigation
-    if (prevArrow) {
-        prevArrow.addEventListener('click', () => {
-            closeAchievementDescription(achievementCards[currentAchievementIndex]);
-            currentAchievementIndex = (currentAchievementIndex - 1 + achievementCards.length) % achievementCards.length;
-            updateAchievementCarousel();
-        });
-    }
-
-    if (nextArrow) {
-        nextArrow.addEventListener('click', () => {
-            closeAchievementDescription(achievementCards[currentAchievementIndex]);
-            currentAchievementIndex = (currentAchievementIndex + 1) % achievementCards.length;
-            updateAchievementCarousel();
-        });
-    }
-
-    // Dots navigation
-    achievementDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            if (currentAchievementIndex !== index) {
-                closeAchievementDescription(achievementCards[currentAchievementIndex]);
-                currentAchievementIndex = index;
-                updateAchievementCarousel();
-            }
-        });
-    });
-
-    // View more buttons - CHỈ cho achievement
-    achievementSection.querySelectorAll('.view-more-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const card = btn.closest('.achievement-card');
-            
-            if (!card.classList.contains('active')) return;
-
-            const description = card.querySelector('.achievement-description');
-            const isExpanding = !description.classList.contains('show');
-            
-            description.classList.toggle('show');
-            btn.textContent = description.classList.contains('show') ? 'Thu gọn' : 'Xem thêm';
-            btn.classList.toggle('active');
-
-            if (isExpanding) {
-                card.classList.add('expanded');
-                achievementWrapper.classList.add('expanded');
-            } else {
-                card.classList.remove('expanded');
-                achievementWrapper.classList.remove('expanded');
-            }
-        });
-    });
-
-
-
-    
-
-    updateAchievementCarousel();
-}
 
 
 // ============= CHINH-UY CAROUSEL =============
