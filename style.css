@@ -3055,6 +3055,10 @@ main {
             .hof-title {
                 font-size: 1.6rem; /* Font chữ nhỏ hơn trên mobile */
             }
+            .hof-subtitle {
+                margin-left: 0; /* Xóa margin trái trên mobile */
+                font-size: 1rem;
+            }
         }
 
         /* footer */
