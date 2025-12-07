@@ -58,10 +58,15 @@ header {
 }
 
 header .logo .logo-80 {
-    width: 150px;
+    width: 250px;
     height: auto;
     padding-top: 0;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
+
+}
+.menu-header .menu-logo .logo-tron {
+    width: 70px;
+    height: auto;
 }
 
 .menu-btn {
@@ -297,19 +302,18 @@ main {
 
 .video-overlay.active {
     display: flex;
+
 }
 
 .video-container {
     position: relative;
-    width: 80%;
-    max-width: 800px;
+    max-width: 2000px;
+    width: 1000px;
+    height: auto;
     aspect-ratio: 16 / 9;
+    
 }
 
-.video-container video {
-    width: 100%;
-    border-radius: 8px;
-}
 
 .close-button {
     position: absolute;
@@ -327,13 +331,21 @@ main {
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    .video-container {
+        width: 90%;
+        height: auto;
+    }
+}
+
 /* =========================================
    4. INTRODUCTION & AUTHORS
    ========================================= */
 .author-section {
-    background-color: #D1D3D4;
+    background-color: #F9F5F0;
     padding: 50px 20px 30px;
     font-family: 'Be Vietnam Pro', sans-serif;
+    margin-bottom: 40px;
 }
 
 .author-container {
@@ -372,7 +384,7 @@ main {
     display: flex;
     align-items: center;
     padding: 25px;
-    background: #b8b8b8;
+    background: #D1D3D4;
     border-left: 5px solid var(--red-color);
     transition: all 0.3s ease;
 }
@@ -551,7 +563,7 @@ main {
 }
 
 /* =========================================
-   5. NESTED ACCORDION TIMELINE (ADDED HERE)
+5. NESTED ACCORDION TIMELINE (ADDED HERE)
    ========================================= */
 #time-line {
     background-color: #F9F8F6;
@@ -764,11 +776,14 @@ main {
     color: var(--red-color);
     font-size: 0.9rem;
     padding-right: 10px;
+    width: 85px;
+    margin-right: 10px;
 }
 
 .sub-desc {
     font-size: 0.95rem;
     color: #444;
+    left: 0;
 }
 
 .sub-desc strong {
@@ -814,6 +829,12 @@ main {
     
     #time-line h1 { 
         font-size: 1.6rem; 
+    }
+    .sub-date {
+        font-size: 0.80rem;
+    }
+    .sub-desc {
+        font-size: 13px;
     }
 }
 
@@ -1148,6 +1169,7 @@ main {
         gap: 0 !important;
         position: relative !important;
         width: 350px !important;
+        right: 10px !important;
     }
 
     .slide-number-chinh-uy {
@@ -1172,6 +1194,12 @@ main {
         margin-bottom: 15px !important;
         margin-top: 0 !important;
     }
+    .slide-number-chinh-uy {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 14px !important;
+        right: 50px !important;
+    }
 
     /* INFO ITEMS - LAYOUT DỌC */
     .info-item-chinh-uy {
@@ -1179,7 +1207,7 @@ main {
         flex-direction: column !important;
         align-items: flex-start !important;
         gap: 3px !important;
-        padding: 8px 0 !important;
+        padding: 8px 20px !important;
         margin-bottom: 6px !important;
         border-bottom: 1px solid #eee !important;
     }
@@ -1204,7 +1232,7 @@ main {
 
     /* VALUE */
     .info-value-chinh-uy {
-        width: 100% !important;
+        width: 87% !important;
         max-width: 100% !important;
         text-align: left !important;
         font-size: 15px !important;
@@ -1298,35 +1326,15 @@ main {
     }
 }
 
-/* =========================================
-7. TU LENH SECTION & OTHERS (Placeholders/Continued)
-   ========================================= */
-/* (The rest of your CSS for Tu Lenh, Digital, and Footer goes here 
-   following the structure you provided in the long snippet) */
-
-.commissar-section-tu-lenh {
-    background-color: #D1D3D4;
-    padding: 60px 20px;
-    min-height: 600px;
-}
-
-.container-tu-lenh {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* ... (Remaining styles for Tu Lenh, Digital, Footer, Global Mobile fix) ... */
-/* For brevity, I am ending here as you requested specifically up to the end of timeline 
-plus proper placement before Chinh Uy. 
-   Copy the rest of your original CSS starting from .commissar-section-tu-lenh downwards. */
 
 /* tư lệnh */
 
 /* ============= TƯ LỆNH SECTION ============= */
 .commissar-section-tu-lenh {
-    background-color: #D1D3D4;
-    padding: 60px 20px;
     min-height: 600px;
+    background-color: #F9F5F0;
+    padding: 60px 20px;
+
 }
 
 .container-tu-lenh {
@@ -1420,7 +1428,7 @@ plus proper placement before Chinh Uy.
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    width: 350px;
+    width: 370px;
     transition: all 0.3s ease;
     position: relative;
 }
@@ -1437,7 +1445,7 @@ plus proper placement before Chinh Uy.
 }
 
 .slide-content-tu-lenh {
-    padding: 25px;
+    padding: 15px;
     text-align: center;
 }
 
@@ -1495,13 +1503,22 @@ plus proper placement before Chinh Uy.
     min-width: 100px;
     text-align: left;
 }
+.info-wrap-tu-lenh {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    
+}
 
 .info-value-tu-lenh {
     color: #555;
     font-size: 14px;
-    text-align: right;
+    text-align: left;
     flex: 1;
     font-family: var(--font-secondary);
+    max-width: 155px;
+    right: 0;
+
 }
 
 .rank-badge-tu-lenh {
@@ -1632,7 +1649,9 @@ plus proper placement before Chinh Uy.
         background: white !important;
         border-radius: 16px !important;
         box-shadow: 0 10px 40px rgba(0,0,0,0.15) !important;
+
     }
+
 
     /* ===== ẢNH CỐ ĐỊNH ===== */
     .slide-image-tu-lenh {
@@ -1644,7 +1663,7 @@ plus proper placement before Chinh Uy.
 
     /* ===== CONTENT AREA ===== */
     .slide-content-tu-lenh {
-        padding: 18px 15px !important;
+        padding: 18px 20px !important;
         flex: 1 !important;
         display: flex !important;
         flex-direction: column !important;
@@ -1657,7 +1676,7 @@ plus proper placement before Chinh Uy.
         height: 30px !important;
         font-size: 14px !important;
         top: 10px !important;
-        right: 10px !important;
+        right: 50px !important;
     }
 
     /* ===== TÊN ===== */
@@ -1706,7 +1725,7 @@ plus proper placement before Chinh Uy.
 
     /* ===== VALUE - FIX CHỒNG CHỮ ===== */
     .info-value-tu-lenh {
-        width: 100% !important;
+        width: 87% !important;
         max-width: 100% !important;
         text-align: left !important;
         font-size: 15px !important;
@@ -1721,6 +1740,9 @@ plus proper placement before Chinh Uy.
         overflow-wrap: break-word !important;
         white-space: normal !important;
         display: block !important;
+    }
+    .info-wrap-tu-lenh {
+        width: 87% !important;
     }
 
     /* ===== BADGE ===== */
@@ -1802,32 +1824,37 @@ plus proper placement before Chinh Uy.
         width: 28px;
         height: 28px;
         font-size: 13px;
+
     }
+    
 }
 /* thành tựu */
 
 .thanhtuu {
             background-color: #D1D3D4;
             padding: 60px 20px;
-            min-height: 600px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-family: 'Be Vietnam Pro', sans-serif;
         }
 
         .thanhtuu-title {
             color: var(--red-color);
-            font-family: var(--font-primary);
-            font-size: 50px;
+            font-size: 40px; /* Adjusted for better mobile fit */
             text-align: center;
-            font-weight: 600;
-            margin-bottom: 10px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            text-transform: uppercase;
         }
 
-        /* CAROUSEL CONTAINER */
+        /* --- CAROUSEL CONTAINER --- */
         .achievement-carousel-container {
-            max-width: 1700px;
+            max-width: 1400px;
             margin: 0 auto;
             position: relative;
-            padding: 0 20px;
-            overflow: hidden;
+            padding: 0 40px; /* Space for arrows */
         }
 
         .achievement-carousel-wrapper {
@@ -1835,13 +1862,13 @@ plus proper placement before Chinh Uy.
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 550px;
-            overflow: visible;
+            min-height: 600px;
             transition: min-height 0.5s ease;
         }
 
+        /* Khi wrapper mở rộng (do card mở rộng) */
         .achievement-carousel-wrapper.expanded {
-            min-height: 800px;
+            min-height: 850px;
         }
 
         .achievement-track {
@@ -1850,216 +1877,172 @@ plus proper placement before Chinh Uy.
             align-items: center;
             justify-content: center;
             width: 100%;
+            perspective: 1000px; /* Hiệu ứng 3D nhẹ */
+        }
+
+        /* --- ACHIEVEMENT CARD --- */
+        .achievement-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            flex-shrink: 0;
+            width: 300px;
+            height: 450px;
+            opacity: 0.6;
+            filter: blur(1px) grayscale(30%);
+            transform: scale(0.9);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Trạng thái Active */
+        .achievement-card.active {
+            width: 450px;
+            height: 550px;
+            opacity: 1;
+            filter: blur(0) grayscale(0);
+            transform: scale(1);
+            z-index: 10;
+            border: 2px solid transparent;
+        }
+
+        /* Trạng thái Expanded (Khi bấm xem thêm) */
+        .achievement-card.active.expanded {
+            height: 800px; /* Tăng chiều cao để chứa nội dung */
+        }
+
+        /* IMAGE STYLES */
+        .achievement-image {
+            width: 100%;
+            height: 50%;
+            object-fit: cover;
+            transition: height 0.5s ease;
+        }
+
+        .achievement-card.active.expanded .achievement-image {
+            height: 30%; /* Thu nhỏ ảnh khi nội dung hiện ra */
+        }
+
+        /* INFO CONTAINER */
+        .achievement-info {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             position: relative;
         }
 
-        /* ACHIEVEMENT CARD */
-.achievement-card {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    flex-shrink: 0;
-    width: 340px;
-    height: 420px;
-    opacity: 0.5;
-    filter: blur(2px);
-    transform: scale(0.85);
-}
+        .achievement-number {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: rgba(140, 16, 7, 0.1);
+            font-weight: 900;
+            font-size: 120px;
+            line-height: 1;
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+        
+        .achievement-card.active .achievement-number {
+            font-size: 150px;
+            top: -20px;
+            right: 10px;
+        }
 
-.achievement-card.active {
-    width: 450px;
-    height: 520px;
-    opacity: 1;
-    filter: blur(0);
-    transform: scale(1);
-    z-index: 10;
-}
+        .achievement-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--red-color);
+            margin: 10px 0 15px 0;
+            text-transform: uppercase;
+            z-index: 2;
+        }
 
-.achievement-card.active.expanded {
-    height: 700px;  /* Tăng chiều cao khi mở rộng */
-}
+        .achievement-card.active .achievement-title {
+            font-size: 22px;
+        }
 
-.achievement-image {
-    width: 100%;
-    height: 60%;
-    object-fit: cover;
-    display: block;
-}
-
-.achievement-card.active .achievement-image {
-    height: 55%;  /* Thu nhỏ ảnh khi active */
-}
-
-/* Card info - QUAN TRỌNG */
-.achievement-info {
-    padding: 20px;
-    text-align: center;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 40%;
-    justify-content: flex-start;
-    overflow: visible;  /* Cho phép nội dung tràn ra */
-}
-
-.achievement-card.active .achievement-info {
-    padding: 25px;
-    height: 55%;
-}
-
-.achievement-number {
-    position: absolute;
-    top: 40px;
-    right: 20px;
-    color: rgba(116, 110, 110, 0.15);
-    font-weight: 800;
-    font-size: 190px;
-    font-family: var(--font-primary);
-    line-height: 1;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.achievement-card.active .achievement-number {
-    font-size: 260px;
-    top: -15px;
-    right: 15px;
-}
-
-.achievement-title {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--red-color);
-    margin-bottom: 10px;
-    line-height: 1.3;
-    padding-top: 5px;
-    position: relative;
-    z-index: 1;
-    font-family: 'Be Vietnam Pro', sans-serif;
-    min-height: auto;  /* Bỏ min-height cố định */
-}
-
-.achievement-card.active .achievement-title {
-    font-size: 20px;
-    margin-bottom: 10px;
-    padding-top: 10px;
-}
-
-/* View More Button - LUÔN HIỂN THỊ */
-.view-more-btn {
-    background: var(--red-color);
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 0;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
-    font-family: var(--font-secondary);
-    display: inline-block;
-    align-self: center;
-    position: relative;
-    z-index: 1;
-}
-
-.view-more-btn:hover {
-    background: #6b0c05;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(140, 16, 7, 0.3);
-}
-
-.view-more-btn.active {
-    background: #555;
-}
-
-/* Description - CÓ THỂ CUỘN */
-.achievement-description {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.6;
-    max-height: 0;
-    overflow-y: auto;
-    opacity: 0;
-    transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
-    text-align: left;
-    position: relative;
-    z-index: 1;
-}
-
-.achievement-description.show {
-    max-height: 280px;  /* Chiều cao tối đa khi mở */
-    opacity: 1;
-    margin-top: 10px;
-}
-
-.achievement-description::-webkit-scrollbar {
-    width: 6px;
-}
-
-.achievement-description::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-.achievement-description::-webkit-scrollbar-thumb {
-    background: var(--red-color);
-    border-radius: 10px;
-}
-
-.achievement-description::-webkit-scrollbar-thumb:hover {
-    background: #6b0c05;
-}
-
-.achievement-card.active .achievement-description {
-    font-size: 15px;
-}
-
-.achievement-description ul {
-    list-style-position: inside;
-    padding-left: 0;
-    margin: 0;
-}
-
-.achievement-description li {
-    margin-bottom: 10px;
-}
-
-        /* View More Button */
+        /* BUTTON */
         .view-more-btn {
             background: var(--red-color);
             color: white;
             border: none;
             padding: 10px 25px;
-            border-radius: 8px;
-            font-size: 15px;
+            border-radius: 50px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            margin-top: 15px;
             transition: all 0.3s ease;
-            font-family: var(--font-secondary);
-            display: inline-block;
-            align-self: center;
+            z-index: 5;
+            margin-bottom: 10px;
         }
 
         .view-more-btn:hover {
-            background: #6b0c05;
+            background: #600b05;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(140, 16, 7, 0.3);
+            box-shadow: 0 5px 15px rgba(140, 16, 7, 0.4);
         }
 
-        .view-more-btn.active {
-            background: #555;
-            margin-top: 10px;
+        /* DESCRIPTION (SCROLLABLE CONTENT) */
+        .achievement-description {
+            width: 100%;
+            text-align: left;
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+            
+            /* Hidden state */
+            max-height: 0;
+            opacity: 0;
+            overflow-y: hidden;
+            
+            transition: all 0.5s ease;
         }
 
-        /* Navigation Arrows */
+        .achievement-description.show {
+    /* Visible state */
+    max-height: 450px; 
+    opacity: 1;
+    overflow-y: auto;
+    margin-top: 15px;
+    padding-right: 10px; /* Tăng khoảng cách với thanh cuộn */
+    
+    /* --- DÒNG QUAN TRỌNG CẦN THÊM --- */
+    padding-bottom: 40px; /* Thêm khoảng trống lớn ở đáy để chữ không bị che */
+}
+
+        /* Custom Scrollbar for Description */
+        .achievement-description::-webkit-scrollbar { width: 6px; }
+        .achievement-description::-webkit-scrollbar-track { background: #f1f1f1; }
+        .achievement-description::-webkit-scrollbar-thumb { background: var(--red-color); border-radius: 10px; }
+
+        .achievement-description ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievement-description li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .achievement-description li:last-child {
+            border-bottom: none;
+        }
+
+        .achievement-description strong {
+            color: var(--red-color);
+        }
+
+        /* --- NAVIGATION CONTROLS --- */
         .achievement-arrow {
             position: absolute;
             top: 50%;
@@ -2075,32 +2058,24 @@ plus proper placement before Chinh Uy.
             justify-content: center;
             cursor: pointer;
             z-index: 20;
-            transition: all 0.3s ease;
             font-size: 24px;
             font-weight: bold;
+            transition: all 0.3s;
         }
 
         .achievement-arrow:hover {
             background: var(--red-color);
             color: white;
-            transform: translateY(-50%) scale(1.1);
         }
 
-        .achievement-arrow.prev {
-            left: 0;
-        }
+        .achievement-arrow.prev { left: -20px; }
+        .achievement-arrow.next { right: -20px; }
 
-        .achievement-arrow.next {
-            right: 0;
-        }
-
-
-        /* Dots Navigation */
         .achievement-dots {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 50px;
+            gap: 10px;
+            margin-top: 40px;
         }
 
         .achievement-dot {
@@ -2109,72 +2084,243 @@ plus proper placement before Chinh Uy.
             border-radius: 50%;
             background: #999;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
         .achievement-dot.active {
             background: var(--red-color);
             width: 30px;
-            border-radius: 6px;
+            border-radius: 10px;
         }
 
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .achievement-track {
-                gap: 15px;
-            }
-
-            .achievement-card {
-                width: 200px;
-                height: 300px;
-            }
-
-            .achievement-card.active {
-                width: 380px;
-                height: 450px;
-            }
-
-            .achievement-card.active.expanded {
-                height: 650px;
-            }
+        .chuthic {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-style: italic;
+            font-size: 14px;
         }
 
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .thanhtuu-title {
-                font-size: 36px;
-                margin-bottom: 40px;
-            }
-
-            .achievement-carousel-container {
-                padding: 0 15px;
-            }
-            .achievement-card .view-more-btn {
-                margin-top: -5px;
-            }
-
-            .achievement-track {
-                gap: 10px;
-            }
-
-            .achievement-card {
-                width: 150px;
-                height: 250px;
-            }
-
-            .achievement-card.active {
-                width: 350px;
-                height: 420px;
-            }
-
-            .achievement-card.active.expanded {
-                height: 600px;
-            }
-
-            /* Ẩn cards khô ng active trên mobile */
-            .achievement-card:not(.active) {
-                display: none;
-            }
+            .thanhtuu-title { font-size: 28px; }
+            .achievement-card { display: none; } /* Ẩn card không active */
+            .achievement-card.active { display: flex; width: 100%; height: auto; min-height: 500px; }
+            .achievement-card.active.expanded { height: auto; }
+            .achievement-carousel-wrapper { min-height: auto; }
+            .achievement-image { height: 200px; }
+            .achievement-arrow { width: 40px; height: 40px; font-size: 18px; }
+            .chuthic {margin-top: 100px;}
         }
+
+        /* xe khi tai */
+        /* =========================================
+   6. MILITARY ITEMS (Formerly Digital)
+   ========================================= */
+.military-items-section {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.military-items-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(90deg, rgba(140, 16, 7, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(140, 16, 7, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+}
+
+.military-items-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.military-items-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.military-items-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--red-color);
+    margin-bottom: 25px;
+    position: relative;
+    display: inline-block;
+}
+
+.military-items-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--red-color);
+    border-radius: 2px;
+}
+
+.military-items-intro {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    max-width: 900px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+}
+
+/* Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Tech Card Styles (Kept class name generic as requested to only change section classes) */
+.tech-card {
+    background: white;
+    border-radius: 16px;
+    padding: 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.tech-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--red-color), #d32f2f);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.tech-card:hover::before {
+    transform: scaleX(1);
+}
+
+.tech-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(140, 16, 7, 0.15);
+}
+
+.tech-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-icon {
+    width: 100%;
+    height: 250px;
+    border-radius: 16px 16px 0 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tech-card:hover .card-icon {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.card-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.card-description {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #666;
+}
+
+.card-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 48px;
+    font-weight: 800;
+    color: rgba(140, 16, 7, 0.08);
+    z-index: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+
+    .military-items-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .military-items-section {
+        padding: 50px 15px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .military-items-title {
+        font-size: 32px;
+    }
+
+    .military-items-intro {
+        font-size: 16px;
+    }
+
+    .tech-card {
+        height: auto; /* Allow auto height on mobile */
+    }
+
+    .card-icon {
+        height: 200px;
+    }
+
+    .card-title {
+        font-size: 20px;
+    }
+
+    .card-description {
+        font-size: 15px;
+    }
+}
 
         /* chuyendoiso */
 
@@ -2453,7 +2599,465 @@ plus proper placement before Chinh Uy.
             gap: 20px;
         }
 }
-/* footer */
+
+/* 2. EQUIPMENT SECTION STYLES
+=========================================  */
+        .equipment-section {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle grid pattern background (Consistent with Digital Section) */
+        .equipment-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(140, 16, 7, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(140, 16, 7, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .equipment-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Header Styles --- */
+        .equipment-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .equipment-title {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--red-color);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            font-family: var(--font-primary);
+        }
+
+        .equipment-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--red-color);
+            border-radius: 2px;
+        }
+
+        /* --- Filter Menu (Tab System) --- */
+        .equipment-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid #ccc;
+            color: #666;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-secondary);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--red-color);
+            color: var(--red-color);
+        }
+
+        .filter-btn.active {
+            background-color: var(--red-color);
+            border-color: var(--red-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(140, 16, 7, 0.3);
+        }
+
+        /* --- Equipment Grid --- */
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 Columns Desktop */
+            gap: 30px;
+        }
+
+        /* --- Equipment Card (Design Consistency) --- */
+        .eq-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-card);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent; /* Prepare for hover border */
+            
+            /* Initial State for Animation */
+            opacity: 0;
+            transform: translateY(30px);
+            display: flex; /* Flex layout for card structure */
+            flex-direction: column;
+        }
+
+        .eq-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover Effect "Lift Up" */
+        .eq-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--red-color); /* Subtle red border on hover */
+        }
+
+        /* Top Progress Bar Effect (Visual Flair from Reference) */
+        .eq-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--red-color), #d32f2f);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            z-index: 2;
+        }
+        .eq-card:hover::before { transform: scaleX(1); }
+
+        /* Card Image Area */
+        .eq-card-image {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .eq-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .eq-card:hover .eq-card-image img {
+            transform: scale(1.05);
+        }
+
+        /* Origin Badge */
+        .origin-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(44, 62, 80, 0.9);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Card Content */
+        .eq-card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .eq-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--red-color);
+            margin-bottom: 5px;
+            font-family: var(--font-primary);
+        }
+
+        .eq-subtitle {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .eq-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Filter Hidden State (for JS) */
+        .eq-card.hidden {
+            display: none;
+        }
+
+        /* --- Responsive Breakpoints --- */
+        @media (max-width: 1024px) {
+            .equipment-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 Columns Tablet */
+            }
+            .equipment-title { font-size: 36px; }
+        }
+
+        @media (max-width: 768px) {
+            .equipment-grid {
+                grid-template-columns: 1fr; /* 1 Column Mobile */
+            }
+            .equipment-title { font-size: 28px; }
+            .equipment-section { padding: 50px 15px; }
+            .filter-btn {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+
+        /* AHLLVTND */
+
+        .hof-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        .hof-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hof-header {
+            display: flex; /* Kích hoạt Flexbox */
+            align-items: center; /* Căn giữa theo trục dọc */
+            justify-content: center; /* Căn giữa theo trục ngang */
+            gap: 20px; /* Khoảng cách giữa Logo và Tiêu đề */
+            margin-bottom: 50px;
+            text-align: left; /* Đặt lại text-align cho nội dung bên trong */
+        }
+
+        /* Container chứa Title và Subtitle để chúng nằm cùng một khối */
+        .hof-title-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Logo nằm bên cạnh */
+        .ahll-img {
+            width: 100px;       /* Điều chỉnh kích thước logo phù hợp */
+            height: auto;
+            object-fit: contain;
+            margin: 0;          /* Xóa margin auto cũ */
+            flex-shrink: 0;     /* Ngăn logo bị co lại */
+        }
+
+        .hof-title {
+            font-size: 2.2rem; /* Giảm nhẹ font-size nếu cần để vừa vặn */
+            color: var(--red-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .hof-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0; /* Xóa margin auto cũ */
+            text-align: center;
+            margin-left: 150px;
+        }
+
+        .hof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* =========================================
+           3. COLUMN & LIST STYLES
+           ========================================= */
+        .hof-column {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-header {
+            border-bottom: 3px solid var(--red-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--red-color);
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .hof-list {
+            list-style: none;
+            counter-reset: hof-counter;
+            padding: 0;
+            margin: 0;
+        }
+
+        .hof-item {
+            position: relative;
+            padding: 15px 0 15px 40px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1rem;
+            color: #444;
+            transition: background-color 0.2s;
+        }
+
+        /* Custom Numbering */
+        .hof-item::before {
+            counter-increment: hof-counter;
+            content: counter(hof-counter) ".";
+            position: absolute;
+            left: 0;
+            top: 15px;
+            font-weight: 800;
+            color: var(--red-color);
+            font-size: 1.1rem;
+            width: 30px;
+        }
+
+        .hof-item:hover {
+            background-color: #fcfcfc;
+        }
+
+        /* Hidden State Class */
+        .hof-item.hidden {
+            display: none;
+        }
+
+        /* =========================================
+        4. CONTROLS AREA
+           ========================================= */
+        .control-area {
+            margin-top: 25px;
+            text-align: center;
+            padding-top: 10px;
+            border-top: 2px dashed #eee;
+        }
+
+        .counter-text {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        /* Primary Button (Show More) */
+        .btn-primary {
+            background-color: var(--red-color);
+            color: white;
+            border: 1px solid var(--red-color);
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #6d0c05;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(140, 16, 7, 0.2);
+        }
+
+        /* Secondary Button (Show Less) */
+        .btn-secondary {
+            background-color: #FFFFFF;
+            color: var(--red-color);
+            border: 1px solid var(--red-color);
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #fff5f5;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Utility to hide buttons completely when not needed */
+        .d-none {
+            display: none !important;
+        }
+
+        /* =========================================
+        5. RESPONSIVE
+           ========================================= */
+        @media (max-width: 768px) {
+            .hof-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .hof-column {
+                padding: 20px;
+            }
+            .hof-title {
+                font-size: 1.5rem;
+            }
+            .hof-header {
+                flex-direction: column; /* Chuyển về cột trên mobile */
+                text-align: center;     /* Căn giữa text trở lại */
+                gap: 15px;
+            }
+
+            .ahll-img {
+                width: 80px; /* Nhỏ hơn trên mobile */
+            }
+
+            .hof-title {
+                font-size: 1.6rem; /* Font chữ nhỏ hơn trên mobile */
+            }
+        }
+
+        /* footer */
 .footer {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             padding: 60px 20px 40px;
