@@ -136,238 +136,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ============= TIMELINE CAROUSEL =============
 function toggleDetails(btn) {
-            const card = btn.closest('.era-card');
-            const spanText = btn.firstChild; // The text node
-            
-            // Toggle active class
-            if (card.classList.contains('active')) {
-                card.classList.remove('active');
-                // Use innerHTML to preserve the chevron span
-                btn.innerHTML = 'Xem chi tiết <span class="chevron">▼</span>';
-                btn.style.backgroundColor = "transparent";
-                btn.style.color = "#8c1007";
-            } else {
-                card.classList.add('active');
-                btn.innerHTML = 'Thu gọn <span class="chevron">▲</span>';
-                btn.style.backgroundColor = "#8c1007";
-                btn.style.color = "white";
-            }
-        }
-
-
-// ============= CHINH-UY CAROUSEL =============
-    const chinhUySection = document.querySelector('.commissar-section-chinh-uy');
-    if (chinhUySection) {
-        const slides = chinhUySection.querySelectorAll('.carousel-slide-chinh-uy');
-        const track = chinhUySection.querySelector('.carousel-track-chinh-uy');
-        const indicatorsContainer = chinhUySection.querySelector('.carousel-indicators-chinh-uy');
-        const prevBtn = chinhUySection.querySelector('.prev-chinh-uy');
-        const nextBtn = chinhUySection.querySelector('.next-chinh-uy');
-        let currentSlideIndex = 0;
-
-        // Create indicators
-        if (indicatorsContainer) {
-            slides.forEach((_, index) => {
-                const indicator = document.createElement('span');
-                indicator.className = 'indicator-chinh-uy';
-                if (index === 0) indicator.classList.add('active-chinh-uy');
-                indicator.addEventListener('click', () => {
-                    currentSlideIndex = index;
-                    updateChinhUyCarousel();
-                });
-                indicatorsContainer.appendChild(indicator);
-            });
-        }
-
-        function updateChinhUyCarousel() {
-            slides.forEach((slide, index) => {
-                slide.classList.remove('active-chinh-uy', 'prev-chinh-uy', 'next-chinh-uy');
-                
-                if (index === currentSlideIndex) {
-                    slide.classList.add('active-chinh-uy');
-                } else if (index === currentSlideIndex - 1 || (currentSlideIndex === 0 && index === slides.length - 1)) {
-                    slide.classList.add('prev-chinh-uy');
-                } else if (index === currentSlideIndex + 1 || (currentSlideIndex === slides.length - 1 && index === 0)) {
-                    slide.classList.add('next-chinh-uy');
-                }
-            });
-
-            // Update indicators
-            if (indicatorsContainer) {
-                const indicators = indicatorsContainer.querySelectorAll('.indicator-chinh-uy');
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active-chinh-uy', index === currentSlideIndex);
-                });
-            }
-        }
-
-        function nextSlideChinhUy() {
-            currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-            updateChinhUyCarousel();
-        }
-
-        function prevSlideChinhUy() {
-            currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-            updateChinhUyCarousel();
-        }
-
-        // Add event listeners to navigation buttons
-        if (prevBtn) {
-            prevBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                prevSlideChinhUy();
-            });
-        }
-        if (nextBtn) {
-            nextBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                nextSlideChinhUy();
-            });
-        }
-
-        // Click on side slides
-        slides.forEach((slide) => {
-            slide.addEventListener('click', (e) => {
-                if (slide.classList.contains('active-chinh-uy')) {
-                    return;
-                }
-                
-                if (slide.classList.contains('prev-chinh-uy')) {
-                    e.stopPropagation();
-                    prevSlideChinhUy();
-                }
-                
-                if (slide.classList.contains('next-chinh-uy')) {
-                    e.stopPropagation();
-                    nextSlideChinhUy();
-                }
-            });
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (chinhUySection.getBoundingClientRect().top < window.innerHeight && 
-                chinhUySection.getBoundingClientRect().bottom > 0) {
-                if (e.key === 'ArrowLeft') {
-                    prevSlideChinhUy();
-                } else if (e.key === 'ArrowRight') {
-                    nextSlideChinhUy();
-                }
-            }
-        });
-
-        // Initialize
-        updateChinhUyCarousel();
+    const card = btn.closest('.era-card');
+    if (card.classList.contains('active')) {
+        card.classList.remove('active');
+        btn.innerHTML = 'Xem chi tiết <span class="chevron">▼</span>';
+        btn.style.backgroundColor = "transparent";
+        btn.style.color = "#8c1007";
+    } else {
+        card.classList.add('active');
+        btn.innerHTML = 'Thu gọn <span class="chevron">▲</span>';
+        btn.style.backgroundColor = "#8c1007";
+        btn.style.color = "white";
     }
-
-    // ============= TƯ LỆNH CAROUSEL =============
-const tuLenhSection = document.querySelector('.commissar-section-tu-lenh');
-if (tuLenhSection) {
-    const slides = tuLenhSection.querySelectorAll('.carousel-slide-tu-lenh');
-    const track = tuLenhSection.querySelector('.carousel-track-tu-lenh');
-    const indicatorsContainer = tuLenhSection.querySelector('.carousel-indicators-tu-lenh');
-    const prevBtn = tuLenhSection.querySelector('.prev-tu-lenh');
-    const nextBtn = tuLenhSection.querySelector('.next-tu-lenh');
-    let currentSlideIndex = 0;
-
-    // Create indicators
-    if (indicatorsContainer) {
-        slides.forEach((_, index) => {
-            const indicator = document.createElement('span');
-            indicator.className = 'indicator-tu-lenh';
-            if (index === 0) indicator.classList.add('active-tu-lenh');
-            indicator.addEventListener('click', () => {
-                currentSlideIndex = index;
-                updateTuLenhCarousel();
-            });
-            indicatorsContainer.appendChild(indicator);
-        });
-    }
-
-    function updateTuLenhCarousel() {
-        slides.forEach((slide, index) => {
-            slide.classList.remove('active-tu-lenh', 'prev-tu-lenh', 'next-tu-lenh');
-            
-            if (index === currentSlideIndex) {
-                slide.classList.add('active-tu-lenh');
-            } else if (index === currentSlideIndex - 1 || (currentSlideIndex === 0 && index === slides.length - 1)) {
-                slide.classList.add('prev-tu-lenh');
-            } else if (index === currentSlideIndex + 1 || (currentSlideIndex === slides.length - 1 && index === 0)) {
-                slide.classList.add('next-tu-lenh');
-            }
-        });
-
-        // Update indicators
-        if (indicatorsContainer) {
-            const indicators = indicatorsContainer.querySelectorAll('.indicator-tu-lenh');
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active-tu-lenh', index === currentSlideIndex);
-            });
-        }
-    }
-
-    function nextSlideTuLenh() {
-        currentSlideIndex = (currentSlideIndex + 1) % slides.length;
-        updateTuLenhCarousel();
-    }
-
-    function prevSlideTuLenh() {
-        currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
-        updateTuLenhCarousel();
-    }
-
-    // Add event listeners to navigation buttons
-    if (prevBtn) {
-        prevBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            prevSlideTuLenh();
-        });
-    }
-    if (nextBtn) {
-        nextBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            nextSlideTuLenh();
-        });
-    }
-
-    // Click on side slides
-    slides.forEach((slide) => {
-        slide.addEventListener('click', (e) => {
-            if (slide.classList.contains('active-tu-lenh')) {
-                return;
-            }
-            
-            if (slide.classList.contains('prev-tu-lenh')) {
-                e.stopPropagation();
-                prevSlideTuLenh();
-            }
-            
-            if (slide.classList.contains('next-tu-lenh')) {
-                e.stopPropagation();
-                nextSlideTuLenh();
-            }
-        });
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (tuLenhSection.getBoundingClientRect().top < window.innerHeight && 
-            tuLenhSection.getBoundingClientRect().bottom > 0) {
-            if (e.key === 'ArrowLeft') {
-                prevSlideTuLenh();
-            } else if (e.key === 'ArrowRight') {
-                nextSlideTuLenh();
-            }
-        }
-    });
-
-    // Initialize
-    updateTuLenhCarousel();
 }
+
+function toggleSubEvent(btn) {
+    const currentItem = btn.closest('.sub-event-item');
+    const isIsOpen = currentItem.classList.contains('open');
+    const allItems = document.querySelectorAll('.sub-event-item');
+    allItems.forEach(item => {
+        item.classList.remove('open');
+    });
+    if (!isIsOpen) {
+        currentItem.classList.add('open');
+    }
+}
+
 
 // ============= CHUYỂN ĐỔI SỐ =============
 const techObserverOptions = {
@@ -458,186 +252,203 @@ document.addEventListener('DOMContentLoaded', function() {
         // ============ AHLLVTND =============
 
     const collectivesData = [
-            "Lữ đoàn 249, Bộ Tư lệnh Công binh. Được phong tặng danh hiệu Anh hùng Lực lượng vũ trang nhân dân vào ngày 21 tháng 8 năm 2025 (lần thứ ba, với thành tích có cả nhiệm vụ xây cầu phao).",
-            "Binh chủng Công binh. Được phong tặng ngày 13 tháng 12 năm 2013 (lần thứ hai).",
-            "Lữ đoàn 279, Bộ Tư lệnh Công binh. Được phong tặng ngày 22 tháng 12 năm 2009.",
-            "Trường Sĩ quan Công binh. Được phong tặng ngày 13 tháng 3 năm 2008.",
-            "Trung tâm Công nghệ xử lý bom mìn. Được phong tặng ngày 21 tháng 12 năm 2005.",
-            "Trung tâm Công nghệ xử lý Bom mìn (BOMICEN), Binh chủng Công binh. Được Chủ tịch nước tuyên dương Anh hùng LLVTND thời kỳ đổi mới ngày 21 tháng 12 năm 2005.",
-            "Đại đội Công binh tỉnh Phú Yên. Được phong tặng ngày 24 tháng 6 năm 2005.",
-            "Phòng Công trình, Bộ Tư lệnh Công binh. Được phong tặng ngày 23 tháng 5 năm 2005.",
-            "Tiểu đoàn 25, Lữ đoàn 513, Quân khu 3. Được phong tặng ngày 22 tháng 12 năm 2004.",
-            "Lữ đoàn 25, Quân khu 9. Được phong tặng ngày 13 tháng 1 năm 2003.",
-            "Tiểu đoàn 17, Sư đoàn 316, Quân khu 2. Được phong tặng ngày 13 tháng 1 năm 2003.",
-            "Trung đoàn 7, Quân đoàn 3. Được phong tặng ngày 13 tháng 1 năm 2003 (lần thứ ba).",
-            "Tiểu đoàn 27, Trung đoàn 293, Bộ Tư lệnh Công binh. Được phong tặng ngày 12 tháng 12 năm 2000.",
-            "Lữ đoàn 270, Quân khu 5. Được phong tặng ngày 12 tháng 12 năm 2000.",
-            "Lữ đoàn 28, Phòng không - Không quân. Được phong tặng ngày 12 tháng 12 năm 2000.",
-            "Trung đoàn Bảo quản Công trình 72, Bộ Tư lệnh Công binh. Được phong tặng ngày 12 tháng 12 năm 2000.",
-            "Tiểu đoàn 1, Lữ đoàn 229, Bộ Tư lệnh Công binh. Được phong tặng ngày 12 tháng 12 năm 2000.",
-            "Tiểu đoàn Vật cản 93, Bộ Tư lệnh Công binh. Được phong tặng ngày 11 tháng 6 năm 1999.",
-            "Lữ đoàn 575, Quân khu 1. Được phong tặng ngày 11 tháng 6 năm 1999.",
-            "Lữ đoàn 239, Bộ Tư lệnh Công binh. Được phong tặng ngày 31 tháng 7 năm 1998.",
-            "Tiểu đoàn 25, Lữ đoàn 414, Quân khu 4. Được phong tặng ngày 31 tháng 7 năm 1998.",
-            "Lữ đoàn 543, Quân khu 2. Được phong tặng ngày 31 tháng 7 năm 1998.",
-            "Lữ đoàn 414, Quân khu 4. Được phong tặng ngày 31 tháng 7 năm 1998.",
-            "Lữ đoàn 513, Quân khu 3. Được phong tặng ngày 20 tháng 12 năm 1994 (lần thứ hai).",
-            "Trung đoàn 83, Hải quân. Được phong tặng ngày 20 tháng 12 năm 1994 (lần thứ hai).",
-            "Đại đội 8, Tiểu đoàn 3, Lữ đoàn 229, Bộ Tư lệnh Công binh. Được phong tặng ngày 13 tháng 12 năm 1989.",
-            "Trung đoàn 131, Hải quân. Được phong tặng ngày 30 tháng 9 năm 1989.",
-            "Tiểu đoàn 15, Sư đoàn 307, Quân khu 5. Được phong tặng ngày 30 tháng 9 năm 1989.",
-            "Trung đoàn 280, Quân khu 5. Được phong tặng ngày 30 tháng 9 năm 1989.",
-            "Tiểu đoàn 25, Sư đoàn 302 (Mặt trận 479). Được phong tặng ngày 29 tháng 8 năm 1985.",
-            "Tiểu đoàn 25, Sư đoàn 5. Được phong tặng ngày 29 tháng 8 năm 1985.",
-            "Tiểu đoàn 25, Sư đoàn 320. Được phong tặng ngày 29 tháng 8 năm 1985.",
-            "Trung đoàn 509, Binh đoàn 12. Được phong tặng ngày 29 tháng 8 năm 1985.",
-            "Trung đoàn 6, Binh đoàn 12. Được phong tặng ngày 29 tháng 8 năm 1985.",
-            "Trung đoàn 513, Quân khu 3. Được phong tặng ngày 29 tháng 8 năm 1985.",
-            "Trung đoàn 550, Quân đoàn 4. Được phong tặng ngày 29 tháng 8 năm 1985.",
-            "Trung đoàn 219, Quân đoàn 2. Được phong tặng ngày 29 tháng 8 năm 1985.",
-            "Lữ đoàn 299, Quân đoàn 1. Được phong tặng ngày 29 tháng 8 năm 1985.",
-            "Binh chủng Công binh. Được phong tặng ngày 20 tháng 10 năm 1976.",
-            "Đại đội 1, Trung đoàn 976, Bộ Tư lệnh 559. Được phong tặng ngày 20 tháng 10 năm 1976.",
-            "Đại đội 2, Tiểu đoàn 4, Lữ đoàn 414, Quân khu 4. Được phong tặng ngày 20 tháng 10 năm 1976.",
-            "Đại đội 8, Trung đoàn 131, Hải quân. Được phong tặng ngày 20 tháng 10 năm 1976.",
-            "Trung đoàn 217, Bộ Tư lệnh 559. Được phong tặng ngày 20 tháng 10 năm 1976.",
-            "Đại đội Khảo sát Công binh 1. Được phong tặng ngày 20 tháng 10 năm 1976.",
-            "Đại đội 19, Bộ đội địa phương tỉnh Quảng Nam. Được phong tặng ngày 3 tháng 6 năm 1976.",
-            "Đại đội 2, Tiểu đoàn 25, Trung đoàn 550, Quân đoàn 4. Được phong tặng ngày 3 tháng 6 năm 1976.",
-            "Trung đoàn 542, Sư đoàn 473, Bộ Tư lệnh 559. Được phong tặng ngày 3 tháng 6 năm 1976.",
-            "Trung đoàn 35, Sư đoàn 472, Bộ Tư lệnh 559. Được phong tặng ngày 3 tháng 6 năm 1976.",
-            "Trung đoàn 531, Bộ Tư lệnh 559. Được phong tặng ngày 3 tháng 6 năm 1976.",
-            "Trung đoàn 14, Bộ Tư lệnh 559. Được phong tặng ngày 3 tháng 6 năm 1976.",
-            "Trung đoàn Công binh 4, Sư đoàn 470, Bộ Tư lệnh 559. Được phong tặng ngày 3 tháng 6 năm 1976.",
-            "Tiểu đoàn 2, Trung đoàn 229, Bộ Tư lệnh Công binh. Được phong tặng ngày 20 tháng 12 năm 1972.",
-            "Đại đội Công binh 1, Bộ đội địa phương tỉnh Quảng Đà. Được phong tặng ngày 19 tháng 5 năm 1972 (lần thứ hai).",
-            "Tiểu đoàn Công binh 35, Binh trạm 33, Bộ Tư lệnh 559. Được phong tặng ngày 1 tháng 10 năm 1971.",
-            "Đại đội Công binh 11, Tiểu đoàn 75, Binh trạm 41, Bộ Tư lệnh 559. Được phong tặng ngày 25 tháng 8 năm 1970.",
-            "Tiểu đoàn Công binh 2, Binh trạm 12, Bộ Tư lệnh 559. Được phong tặng ngày 25 tháng 8 năm 1970.",
-            "Đại đội Công binh 1, Bắc Quảng Trị. Được phong tặng ngày 25 tháng 8 năm 1970.",
-            "Trung đoàn 7, Bộ Tư lệnh Công binh. Được phong tặng ngày 25 tháng 8 năm 1970 (lần thứ nhất).",
-            "Đại đội 12, Trung đoàn 217, Bộ Tư lệnh Công binh. Được phong tặng ngày 25 tháng 8 năm 1970.",
-            "Đại đội 1, Trung đoàn 7, Bộ Tư lệnh Công binh (nay thuộc Trung đoàn Công binh 414). Được phong tặng ngày 22 tháng 12 năm 1969.",
-            "Tiểu đoàn Công binh 33, Binh trạm 32, Bộ Tư lệnh 559. Được phong tặng ngày 22 tháng 12 năm 1969.",
-            "Đại đội 2, Tiểu đoàn Công binh 27 (nay thuộc Lữ đoàn Công binh 414) Quân khu 4. Được phong tặng ngày 22 tháng 12 năm 1969.",
-            "Đại đội Công binh 1, Bộ đội địa phương tỉnh Quảng Đà. Được phong tặng ngày 20 tháng 12 năm 1969.",
-            "Đại đội Công binh 16, Binh trạm 16, Bộ Tư lệnh 559. Được phong tặng ngày 18 tháng 6 năm 1969.",
-            "Đại đội Công binh 2 thuộc Tiểu đoàn Công binh 31, Binh trạm 32, Bộ Tư lệnh 559. Được phong tặng ngày 18 tháng 6 năm 1969.",
-            "Đại đội Công binh Đặc công nước tỉnh Cần Thơ. Được phong tặng năm 1969.",
-            "Tiểu đoàn Công binh 25 thuộc Binh trạm 1 (sau là Binh trạm 31). Được phong tặng ngày 22 tháng 12 năm 1967.",
-            "Đại đội 4, Trung đoàn Công binh 7, Bộ Tư lệnh Công binh. Được phong tặng lần thứ nhất ngày 1 tháng 1 năm 1967.",
-            "Tiểu đoàn Công binh 25, Quân khu 4. Được phong tặng ngày 1 tháng 1 năm 1967."
+            "1. Đại đội Công binh 4, Trung đoàn 7, Bộ Tư lệnh Công binh. Tuyên dương lần thứ nhất ngày 01/01/1967.",
+            "2. Tiểu đoàn công binh 25 thuộc Binh trạm 1 (sau là Binh trạm 31). Tuyên dương ngày 22/12/1967.",
+            "3. Đại đội Công binh 2 thuộc Tiểu đoàn công binh 1, Binh trạm 32, Bộ Tư lệnh 559. Tuyên dương ngày 18/6/1969.",
+            "4. Đại đội Công binh 16, Bộ Tư lệnh 559. Tuyên dương ngày 18/6/1969.",
+            "5. Đại đội Công binh 1, Bắc Quảng Nam. Tuyên dương ngày 20/12/1969.",
+            "6. Tiểu đoàn Công binh 33, Binh tram 32 Bộ Tư lệnh 559. Tuyên dương ngày 22/12/1969.",
+            "7. Đại đội Công binh 2, Tiểu đoàn Công binh 27, Quân khu 4. Tuyên dương ngày 22/12/1969.",
+            "8. Đại đội Công binh 1, Trung đoàn 7, Bộ Tư lệnh Công binh (sau này thuộc Trung đoàn 414). Tuyên dương ngày 22/12/1969.",
+            "9. Đại đội Công binh 1, Tiểu đoàn 9, Sư đoàn 3, Quân khu 5. Tuyên dương ngày 15/02/1970.",
+            "10. Trung đoàn Công binh 7, Bộ Tư lệnh Công binh. Tuyên dương lần thứ nhất ngày 25/8/1970.",
+            "11. Tiểu đoàn Công binh 2, Binh trạm 12, Bộ Tư lệnh 559. Tuyên dương lần thứ nhất ngày 25/8/1970.",
+            "12. Đại đội Công binh 12, Trung đoàn 217, Bộ Tư lệnh Công binh. Tuyên dương ngày 25/8/1970.",
+            "13. Đại đội Công binh 11, Tiểu đoàn Công binh 75, Binh trạm 41, Bộ Tư lệnh 559. Tuyên dương ngày 25/8/1970.",
+            "14. Tiểu đoàn Công binh 35, Binh trạm 33, Bộ Tư lệnh 559. Tuyên dương ngày 01/10/1971.",
+            "15. Tiểu đoàn Công binh 2, Trung đoàn 229, Bộ Tư lệnh Công binh. Tuyên dương lần thứ nhất ngày 20/12/1972.",
+            "16. Tiểu đoàn Công binh 27, Quân khu 4. Tuyên dương ngày 11/01/1973.",
+            "17. Tiểu đoàn Công binh 2, Binh trạm 37, Bộ Tư lệnh 559. Tuyên dương ngày 11/01/1973.",
+            "18. Trung đoàn Công binh 98, Bộ Tư lệnh Công binh. Tuyên dương ngày 03/9/1973.",
+            "19. Tiểu đoàn Công binh 25, Sư 316 Đoàn Mộc Châu. Tuyên dương ngày 03/9/1973.",
+            "20. Đại đội Công binh 5, Tiểu đoàn 2, Trung đoàn 219, Bộ Tư lệnh Công binh. Tuyên dương ngày 03/9/1973.",
+            "21. Đại đội Công binh 8, Trung đoàn 219, Bộ Tư lệnh Công binh. Tuyên dương ngày 23/9/1973.",
+            "22. Đại đội Công binh 1, Tiểu đoàn Công binh 15, Sư đoàn 2, Quân khu 5. Tuyên dương ngày 23/9/1973.",
+            "23. Đại đội Công binh 10, Tiểu đoàn 739 (sau thuộc Đoàn 25), Bộ chỉ huy Miền. Tuyên dương ngày 20/12/1973.",
+            "24. Đại đội Công binh 4, Trung đoàn Công binh 83, Quân khu 5. Tuyên dương ngày 20/12/1973.",
+            "25. Đại đội Công binh 15, Trung đoàn 38, Sư đoàn 2, Quân khu 5. Tuyên dương ngày 20/12/1973.",
+            "26. Đại đội Công binh 14, Tiểu đoàn 582, Trung đoàn 6, Quân khu Trị - Thiên. Tuyên dương ngày 20/12/1973.",
+            "27. Tiểu đoàn Công binh 24, Binh trạm 16, Bộ Tư lệnh 559. Tuyên dương ngày 31/12/1973.",
+            "28. Đại đội Công binh 10, Binh trạm 11, Tổng cục Hậu cần. Tuyên dương ngày 31/12/1973.",
+            "29. Trung đoàn Công binh 83, Quân khu 5. Tuyên dương ngày 12/9/1975.",
+            "30. Trung đoàn Công binh 99, Bộ Tư lệnh 559. Tuyên dương ngày 12/9/1975.",
+            "31. Tiểu đoàn Công binh 2, Lữ đoàn Công binh 219, Quân đoàn 2. Tuyên dương ngày 12/9/1975.",
+            "32. Tiểu đoàn Công binh 739, Trung đoàn 25 Đông Nam Bộ. Tuyên dương ngày 15/01/1976.",
+            "33. Sư đoàn Công binh 470, Bộ Tư lệnh 559. Tuyên dương ngày 03/6/1976.",
+            "34. Trung đoàn Công binh 4, Sư đoàn Công binh 470, Bộ Tư lệnh 559. Tuyên dương ngày 03/6/1976.",
+            "35. Trung đoàn Công binh 14, Bộ Tư lệnh 559. Tuyên dương ngày 03/6/1976.",
+            "36. Trung đoàn Công binh 531, Bộ Tư lệnh 559. Tuyên dương ngày 03/6/1976.",
+            "37. Trung đoàn Công binh 35, Sư đoàn Công binh 472, Bộ Tư lệnh 559. Tuyên dương ngày 03/6/1976.",
+            "38. Trung đoàn Công binh 542, Sư đoàn Công binh 473, Bộ Tư lệnh 559. Tuyên dương ngày 03/6/1976.",
+            "39. Đại đội Công binh 2, Lữ đoàn Công binh 25, Quân đoàn 4. Tuyên dương ngày 03/6/1976.",
+            "40. Đại đội Công binh 19, bộ đội địa phương Quảng Nam. Tuyên dương ngày 03/6/1976.",
+            "41. Trung đoàn Công binh 217, Bộ Tư lệnh 559. Tuyên dương ngày 20/10/1976.",
+            "42. Đại đội Công binh 8, nay thuộc Trung đoàn Công binh 131 Hải Quân. Tuyên dương ngày 20/10/1976.",
+            "43. Đại đội Công binh 2, Trung đoàn Công binh 414, Quân khu 4. Tuyên dương ngày 20/10/1976.",
+            "44. Đại đội Công binh 1, Trung đoàn Công binh 976, Bộ Tư lệnh 559. Tuyên dương ngày 20/10/1976.",
+            "45. Trung đoàn Công binh 216, Bộ Tư lệnh Công binh. Tuyên dương ngày 06/11/1978.",
+            "46. Đại đội Công binh 19, tỉnh Bình Định (Nghĩa Bình). Tuyên dương ngày 06/11/1978.",
+            "47. Đại đội Công binh 1, Tiểu đoàn Công binh 15, Sư đoàn 3. Tuyên dương ngày 12/9/1975.",
+            "48. Tiểu đoàn Công binh 2, Trung đoàn Công binh 7, Quân đoàn 3. Tuyên dương ngày 28/8/1981.",
+            "49. Đại đội Công binh 10, Tiểu đoàn 4, Trung đoàn Công binh 7, Quân đoàn 3. Tuyên dương ngày 28/8/1981.",
+            "50. Tiểu đoàn Công binh 15, Sư đoàn 4, Quân khu 9. Tuyên dương ngày 25/01/1983.",
+            "51. Tiểu đoàn Công binh 15, Sư đoàn 309, Mặt trận 479. Tuyên dương ngày 25/01/1983.",
+            "52. Tiểu đoàn Công binh 25, Trung đoàn 550, Quân đoàn 4. Tuyên dương ngày 25/01/1983.",
+            "53. Tiểu đoàn Công binh 25, Lữ đoàn Công binh 513, Quân khu 3. Tuyên dương ngày 29/8/1985.",
+            "54. Lữ đoàn Công binh 249, Bộ Tư lệnh Công binh. Tuyên dương ngày 29/8/1985.",
+            "55. Lữ đoàn Công binh 229, Bộ Tư lệnh Công binh. Tuyên dương ngày 29/8/1985.",
+            "56. Lữ đoàn Công binh 299, Quân đoàn 1. Tuyên dương ngày 29/8/1985.",
+            "57. Trung đoàn Công binh 6, Binh đoàn 12. Tuyên dương ngày 29/8/1985.",
+            "58. Trung đoàn Công binh 509, đoàn 384, Binh đoàn 12. Tuyên dương ngày 29/8/1985.",
+            "59. Trung đoàn Công binh 550, Quân đoàn 4. Tuyên dương ngày 29/8/1985.",
+            "60. Trung đoàn Công binh 219, Quân đoàn 2. Tuyên dương ngày 29/8/1985.",
+            "61. Trung đoàn Công binh 513, Quân khu 3. Tuyên dương ngày 29/8/1985.",
+            "62. Tiểu đoàn Công binh 25, Sư đoàn 302, Mặt trận 479. Tuyên dương ngày 29/8/1985.",
+            "63. Trung đoàn Công binh 280, Quân khu 5. Tuyên dương ngày 30/9/1989.",
+            "64. Tiểu đoàn Công binh 15, Sư đoàn 307, Quân khu 5. Tuyên dương ngày 30/9/1989.",
+            "65. Trung đoàn Công binh 131, Quân chủng Hải Quân. Tuyên dương ngày 13/1/1989.",
+            "66. Đại đội Công binh 8, Tiểu đoàn 3, Lữ đoàn 229, Bộ Tư lệnh Công binh. Tuyên dương ngày 13/12/1989.",
+            "67. Trung đoàn Công binh 10, Bộ Tư lệnh 559. Tuyên dương ngày 31/12/1973.",
+            "68. Lữ đoàn Công binh 28, Quân chủng Phòng không – Không quân. Tuyên dương ngày 12/12/2000.",
+            "69. Tiểu đoàn Công binh 1, Lữ đoàn công binh công trình 229, Bộ Tư lệnh Công binh. Tuyên dương ngày 12/12/2000.",
+            "70. Lữ đoàn Công binh vượt sông 239, Bộ Tư lệnh Công binh. Tuyên dương ngày 31/7/1998.",
+            "71. Lữ đoàn Công binh 279, Bộ Tư lệnh Công binh. Tuyên dương ngày 22/12/2009.",
+            "72. Trung đoàn bảo quản Công trình 72, Bộ Tư lệnh Công binh. Tuyên dương ngày 12/12/2000.",
+            "73. Lữ đoàn Công binh 293, Bộ Tư lệnh Công binh. Tuyên dương ngày 07/1/2013.",
+            "74. Tiểu đoàn Công trình 27, Trung đoàn xây dựng Công trình 293, Bộ Tư lệnh Công binh. Tuyên dương ngày 12/12/2000.",
+            "75. Tiểu đoàn Vật cản 93, Bộ tư lệnh Công binh. Tuyên dương ngày 11/6/1999.",
+            "76. Lữ đoàn Công binh 575, Quân khu 1. Tuyên dương ngày 11/6/1999.",
+            "77. Lữ đoàn Công binh 543, Quân khu 2. Tuyên dương ngày 31/7/1998.",
+            "78. Tiểu đoàn Công binh 17 thuộc Sư đoàn 316, Quân khu 2. Tuyên dương ngày 13/01/2003.",
+            "79. Lữ đoàn Công binh 414, Quân khu 4. Tuyên dương ngày 31/7/1998.",
+            "80. Lữ đoàn Công binh 270, Quân khu 5. Tuyên dương ngày 12/12/2000.",
+            "81. Lữ đoàn Công binh 25, Quân khu 7. Tuyên dương ngày 21/12/2005.",
+            "82. Lữ đoàn Công binh 25, Quân khu 9. Tuyên dương 22/12/2004.",
+            "83. Tiểu đoàn Công binh 1, Trung đoàn Công binh 25, Quân khu 9. Tuyên dương ngày 30/8/1989.",
+            "84. Công ty xây dựng Lũng Lô, Binh chủng Công binh (chuyển sang BTTM 12/2012). Tuyên dương Anh hùng lao động ngày 13/12/2013.",
+            "85. Phòng Công trình Quốc phòng (Cục Công trình), Binh chủng Công binh. Tuyên dương ngày 23/5/2005.",
+            "86. Xưởng 10 Công binh Bộ Tham mưu, Quân khu 3. Tuyên dương ngày 30/5/2009.",
+            "87. Trung tâm Công nghệ xử lý bom mìn, Binh chủng Công binh. Tuyên dương ngày 21/12/2005.",
+            "88. Trường Sỹ quan Công binh, Binh chủng Công binh. Tuyên dương ngày 15/3/2008.",
+            "89. Ban quản lý Công trình DK1, Binh chủng Công binh. Tuyên dương ngày 18/12/2014.",
+            "90. Đại đội khảo sát công binh 1, Bộ Tư lệnh 559. Tuyên dương ngày 20/10/1976.",
+            "91. Binh chủng Công binh, Bộ Quốc phòng. Tuyên dương ngày 20/10/1976.",
+            "92. Tiểu đoàn Công binh 25, Sư đoàn 5, Quân khu 7. Tuyên dương ngày 29/8/1985.",
+            "93. Công binh xưởng, Bộ Chỉ huy quân sự tỉnh Sóc Trăng. Tuyên dương ngày 22/2/2010.",
+            "94. Phòng Công binh Miền (nay là Phòng Công binh, Bộ Tham mưu), Quân khu 7. Tuyên dương ngày 16/12/2014.",
+            "95. Đại đội Công binh 604, Bộ Chỉ huy quân sự tỉnh Sóc Trăng, Quân khu 9. Tuyên dương ngày 16/12/2014.",
+            "96. Đội Công binh xưởng Quân giới, thị đội Long Khánh (nay là BCHQS thị xã Long Khánh, Đồng Nai). Tuyên dương ngày 27/4/2012.",
+            "97. Tiểu đoàn Công binh 19, Sư đoàn 395, Quân khu 3. Tuyên dương ngày 21/12/2005.",
+            "98. Đại đội Công binh 1, tỉnh Quảng Nam - Đà Nẵng. Tuyên dương lần thứ hai ngày 19/5/1972.",
+            "99. Tiểu đoàn Công binh 2, Binh trạm 12 Bộ Tư lệnh 559. Tuyên dương lần thứ hai ngày 11/01/1973.",
+            "100. Tiểu đoàn Công binh 2, Lữ đoàn Công binh 229, Bộ Tư lệnh Công binh. Tuyên dương lần thứ hai ngày 30/9/1989.",
+            "101. Đại đội Công binh 4, Trung đoàn Công binh 7, Quân đoàn 3. Tuyên dương lần thứ hai ngày 15/01/1976.",
+            "102. Đại đội Công binh 1, Tiểu đoàn 15, Sư đoàn 3. Tuyên dương lần thứ hai ngày 20/12/1979.",
+            "103. Trung đoàn Công binh 7, Quân đoàn 3. Tuyên dương lần thứ hai ngày 21/12/1979.",
+            "104. Trung đoàn Công binh 83, Bộ Tư lệnh Hải quân. Tuyên dương lần thứ hai ngày 20/12/1994.",
+            "105. Lữ đoàn Công binh 513 Quân khu 3. Tuyên dương lần thứ hai ngày 20/12/1994.",
+            "106. Lữ đoàn Công binh 249, Binh Chủng Công binh. Tuyên dương lần thứ hai ngày 23/12/2011.",
+            "107. Binh chủng Công binh, Bộ Quốc phòng. Tuyên dương lần thứ hai ngày 13/12/2013.",
+            "108. Trung đoàn Công binh 131, Quân chủng Hải quân. Tuyên dương lần thứ hai ngày 21/12/2005.",
+            "109. Lữ đoàn Công binh 299, Quân đoàn 1. Tuyên dương lần thứ hai ngày 29/7/2015.",
+            "110. Lữ đoàn Công binh 543, Quân khu 2. Tuyên dương lần thứ hai ngày 31/7/1998.",
+            "111. Tiểu đoàn Công binh 25, Lữ đoàn Công binh 513, Quân khu 3. Tuyên dương lần thứ hai ngày 22/12/2004.",
+            "112. Trung đoàn công binh 7, Quân đoàn 3. Tuyên dương lần thứ ba ngày 13/01/2003.",
+            "113. Tiểu đoàn Công binh 25, Lữ đoàn Công binh 513, Quân khu 3. Tuyên dương lần thứ ba ngày 22/12/2004.",
+            "114. Lữ đoàn Công binh 249, Binh chủng Công Binh. Tuyên dương lần thứ ba ngày 21/8/2025."
         ];
 
         const individualsData = [
-            "Võ Công Đích – Nguyên Tiểu đội trưởng, Đại đội Công binh, Tỉnh đội Quảng Nam (nay là Bộ CHQS tỉnh Quảng Nam), Quân khu 5 – được trao tặng danh hiệu Anh hùng LLVTND ngày 26/04/2018.",
-            "Hoàng Kiền – Thiếu tướng, nguyên Tư lệnh Binh chủng Công binh – được trao tặng danh hiệu Anh hùng LLVTND ngày 30/11/2015.",
-            "Hoàng Đăng Vinh – Đại tá, nguyên Phó Hiệu trưởng về Chính trị, Trường Tập huấn cán bộ Công binh, Binh chủng Công binh – được trao tặng danh hiệu Anh hùng LLVTND ngày 10/08/2015.",
-            "Phan Đức Sử – Cựu chiến binh, nguyên chiến sĩ Lữ đoàn Công binh Sông Đà, đơn vị công binh chủ lực tham gia Chiến dịch Điện Biên Phủ – được trao tặng danh hiệu Anh hùng LLVTND ngày 10/08/2015.",
-            "Đào Khắc Nhạn – Anh hùng LLVTND  – được trao tặng danh hiệu Anh hùng LLVTND ngày 10/08/2015.",
-            "Nguyễn Phú Xuyên Khung – Anh hùng LLVTND  – được trao tặng danh hiệu Anh hùng LLVTND ngày 21/10/2014.",
-            "Nguyễn Thành Chung – Anh hùng LLVTND  – được trao tặng danh hiệu Anh hùng LLVTND ngày 09/10/2014.",
-            "Du Long Thành – Anh hùng LLVTND  – được trao tặng danh hiệu Anh hùng LLVTND ngày 09/10/2014.",
-            "Nguyễn Phú Xuyên Khung – Anh hùng LLVTND  – được trao tặng danh hiệu Anh hùng LLVTND ngày 09/10/2014.",
-            "Đỗ Vinh Thăng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 09/10/2014.",
-            "Đỗ Vinh Thăng – Anh hùng LLVTND (Công binh, truy tặng) – được trao tặng danh hiệu Anh hùng LLVTND ngày 09/10/2014.",
-            "Nguyễn Hữu Tể – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/12/2012.",
-            "Lại Ngọc Ngợi – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 26/07/2012.",
-            "Ninh Xuân Trường – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 27/04/2012.",
-            "Đinh Quốc Phòng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 28/05/2010.",
-            "Nguyễn Văn Bạch – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 23/02/2010.",
-            "Hồ Văn Ngà – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 23/02/2010.",
-            "Trương Thị Hoa – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 20/12/1994.",
-            "Trương Thị Hoa – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 20/12/1994.",
-            "Nguyễn Văn Lanh – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 13/12/1989.",
-            "Nguyễn Văn Lanh – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND năm 1989 (ngày 13/12/1989).",
-            "Nguyễn Quốc Thất – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 29/04/1985.",
-            "Dương Đức Thùng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 25/01/1983.",
-            "Trần Ngọc Sơn – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 20/12/1979.",
-            "Nguyễn Nho Bông – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 20/12/1979.",
-            "Vũ Duy Vang – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 20/12/1979.",
-            "Vũ Trọng Cường – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 20/12/1979.",
-            "Tông Văn Kim – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 20/12/1979.",
-            "Nguyễn Thị Nhạ – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Trần Kim Xuân – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Nguyễn Xuân Hinh – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Trần Văn Nuôi – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Đoàn Bường – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Võ Thị Huy – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Lê Duy Chin – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Mai Văn Ánh – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Ngô Quang Điền – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Đặng Công Nhân – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Lê Văn Trung – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Hà Hồng Hổ – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Cầm Bá Trùng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Trần Văn Lâm – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 06/11/1978.",
-            "Nguyễn Văn Tửu – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 03/06/1976.",
-            "Nguyễn Văn Tửu – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 03/06/1976.",
-            "Lê Công Tiến – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/01/1976.",
-            "Ngô Xuân Thu – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/01/1976.",
-            "Nguyễn Văn Tư – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/01/1976.",
-            "Trương Văn Biêng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/01/1976.",
-            "Lê Huy Hoàng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/01/1976.",
-            "Ngô Xuân Thu – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/01/1976.",
-            "Lê Huy Hoàng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/01/1976.",
-            "Lương Văn Biêng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/01/1976.",
-            "Nguyễn Văn Tư – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/01/1976.",
-            "Lê Minh Trung – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 12/09/1975.",
-            "Lê Minh Trung – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 12/09/1975.",
-            "Hoàng Quang Tính – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/12/1973.",
-            "Phạm Văn Cờ – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/12/1973.",
-            "Nguyễn Viết Hồng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/12/1973.",
-            "Nguyễn Việt Hồng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/12/1973.",
-            "Hoàng Quang Tích – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/12/1973.",
-            "Phạm Văn Cờ – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/12/1973.",
-            "Cao Văn Hậu – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 23/09/1973.",
-            "Nguyễn Bá Tòng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 11/01/1973.",
-            "Hoàng Hữu Thanh – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 01/10/1971.",
-            "Lê Hữu Hành – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 01/10/1971.",
-            "Hồ Thị Cảnh – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 01/10/1971.",
-            "Lê Hữu Hãnh – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 01/10/1971.",
-            "Hồ Thị Cảnh – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 01/10/1971.",
-            "Trịnh Tố Tâm – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 20/09/1971.",
-            "Trịnh Tố Tâm – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 20/09/1971.",
-            "Lâm Tương – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 05/09/1970.",
-            "Nông Văn Nghi – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 25/08/1970.",
-            "Nguyễn Văn Thân – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 25/08/1970.",
-            "Ma Văn Viên – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 25/08/1970.",
-            "Nguyễn Văn Thoát – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 25/08/1970.",
-            "Nguyễn Ngọc Sâm – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 25/08/1970.",
-            "Ma Văn Viên – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 25/08/1970.",
-            "Nguyễn Văn Hùng – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/02/1970.",
-            "Nguyễn Hữu Quang – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 15/02/1970.",
-            "Trần Ngọc Mật – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 22/12/1969.",
-            "Vũ Tiến Đề – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 22/12/1969.",
-            "Tô Quang Lập – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 22/12/1969.",
-            "Bùi Ngọc Dương – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 23/11/1969.",
-            "Cao Tất Đắc – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 18/06/1969.",
-            "Hoàng Văn Nghiên – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 01/01/1967.",
-            "Cao Văn Khang – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 01/01/1967.",
-            "Nông Văn Việt – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 01/01/1967.",
-            "Nguyễn Văn Bích – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 01/01/1967.",
-            "Nông Văn Việt – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 01/01/1967.",
-            "Trần Văn Chuông – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/08/1965.",
-            "Hồ Văn Bé – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 05/05/1965.",
-            "Hồ Văn Bé – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 05/05/1965.",
-            "Hoàng Văn Phác – Đại đội phó, Trung đoàn 333, Cục Công binh – được trao tặng danh hiệu Anh hùng LLVTND ngày 07/05/1956.",
-            "Trần Hiền Quang – Đại đội trưởng Công binh – được trao tặng danh hiệu Anh hùng LLVTND ngày 07/05/1956.",
-            "Lưu Viết Thoạng – Chính trị viên phó Đại đội, Cục Công binh – được trao tặng danh hiệu Anh hùng LLVTND ngày 07/05/1956.",
-            "Nguyễn Văn Thậm – Anh hùng LLVTND – được trao tặng danh hiệu Anh hùng LLVTND ngày 07/05/1956.",
-            "Hoàng Văn Phác – Đại đội phó, Trung đoàn 333, Cục Công binh – được trao tặng danh hiệu Anh hùng LLVTND ngày 07/05/1956.",
-            "Lưu Viết Thoảng – Chính trị viên phó Đại đội, Cục Công binh – được trao tặng danh hiệu Anh hùng LLVTND ngày 07/05/1956.",
-            "Trần Hiền Quang – Đại đội trưởng Công binh – được trao tặng danh hiệu Anh hùng LLVTND ngày 07/05/1956.",
-            "Trần Văn Chuông – Anh hùng LLVTND  – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/08/1955.",
-            "Bùi Chất – Trung đội trưởng Công binh, Trung đoàn 93, Đại đoàn 324 – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/08/1955.",
-            "Chu Văn Khâm – Trung đội phó, Đại đội 56, Tiểu đoàn Công binh 206, Cục Vận tải – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/08/1955.",
-            "Võ Văn Ngồm – Tiểu đội phó, Đại đội Công binh tỉnh Mỹ Tho – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/08/1955.",
-            "Phan Tư – Đại đội trưởng, Trung đoàn 555, Cục Công binh – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/08/1955.",
-            "Phan Tư – Đại đội trưởng, Trung đoàn 555, Cục Công binh – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/08/1955.",
-            "Chu Văn Khâm – Trung đội phó, Đại đội 56, Tiểu đoàn Công binh 206, Cục Vận tải – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/08/1955.",
-            "Võ Văn Ngôm – Tiểu đội phó, Đại đội Công binh tỉnh Mỹ Tho – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/08/1955.",
-            "Bùi Chát – Anh hùng LLVTND  – được trao tặng danh hiệu Anh hùng LLVTND ngày 31/08/1955."
+            "1. Trần Văn Chuông, Đại đội phó Công binh Tỉnh đội Hà Nam (Quê: Bình Lục, Hà Nam). Tuyên dương 31/8/1955.",
+            "2. Bùi Chát, Trung đội trưởng công binh Trung đoàn 93, Đại đoàn 324 (Quê: Hội An, Quảng Nam). Tuyên dương 31/8/1955.",
+            "3. Chu Văn Khâm, Trung đội phó, Đại đội 56, Tiểu đoàn 206, Cục Vận tải (Quê: Vĩnh Tường, Vĩnh Phú). Tuyên dương 31/8/1955.",
+            "4. Võ Văn Ngôm, Tiểu đội phó, Đại đội công binh tỉnh Mỹ Tho (Quê: Châu Thành, Trà Vinh). Tuyên dương 31/8/1955.",
+            "5. Phan Tư, Đại đội trưởng, Trung đoàn 555, Cục Công binh (Quê: Yên Thành, Nghệ An). Tuyên dương 31/8/1955.",
+            "6. Hoàng Văn Phác, Đại đội phó, Trung đoàn 333, Cục Công binh (Quê: Lạng Giang, Hà Bắc). Tuyên dương 07/5/1956.",
+            "7. Trần Hiền Quang, Đại đội trưởng công binh (Quê: Châu Thành, Sóc Trăng). Tuyên dương 07/5/1956.",
+            "8. Lưu Viết Thoảng, Chính trị viên phó đại đội, Cục Công binh (Quê: Yên Dũng, Hà Bắc). Tuyên dương 07/5/1956.",
+            "9. Hồ Văn Bé, Trung đội trưởng công binh - đặc công tỉnh Tiền Giang (Quê: Chợ Gạo, Tiền Giang). Tuyên dương 05/5/1965.",
+            "10. Hoàng Văn Nghiên, Thượng sĩ, Tiểu đội trưởng công binh, Bộ tư lệnh 559 (Quê: Hoà An, Cao Bằng). Tuyên dương 01/01/1967.",
+            "11. Cao Văn Khang, Trung sĩ, Công binh đảo Cồn Cỏ, Quân khu 4 (Quê: Hoằng Hoá, Thanh Hoá). Tuyên dương 01/01/1967.",
+            "12. Nông Văn Việt, Tiểu đội trưởng, Trung đoàn công binh 7 (Quê: Trùng Khánh, Cao Bằng). Tuyên dương 01/01/1967.",
+            "13. Trần Ngọc Mật, Chuẩn úy, Trung đội trưởng công binh, Quân khu 4 (Quê: Thọ Xuân, Thanh Hoá). Tuyên dương 22/12/1969.",
+            "14. Cao Tất Đắc, Chuẩn úy, Đội phó đội phá bom 89, Quân khu 4 (Quê: Hoằng Hoá, Thanh Hoá). Tuyên dương 18/6/1969.",
+            "15. Vũ Tiến Đề, Chuẩn úy, Đội trưởng máy húc, Bộ tư lệnh 559 (Quê: Đông Quan, Thái Bình). Tuyên dương 22/12/1969.",
+            "16. Tô Quang Lập, Thượng sĩ, Trung đội trưởng công binh, Bộ tư lệnh 559 (Quê: Lục Nam, Hà Bắc). Tuyên dương 22/12/1969.",
+            "17. Bùi Ngọc Dương, Trung đội phó, Trung đoàn Công binh 7 (Quê: Hà Nội). Tuyên dương 23/11/1969.",
+            "18. Nguyễn Văn Bích, Trung đội phó công binh Bắc Gia Định (Quê: Hóc Môn, Gia Định). Tuyên dương 01/01/1967.",
+            "19. Nguyễn Văn Hùng, Trung đội phó công binh Bộ đội địa phương Tây Bắc Sài Gòn (Quê: Củ Chi, Gia Định). Tuyên dương 15/02/1970.",
+            "20. Nguyễn Hữu Quang, Tiểu đoàn trưởng công binh Sư đoàn 3 (Quê: Phù Cát, Nghĩa Bình). Tuyên dương 15/02/1970.",
+            "21. Lâm Tương, Trung đội phó công binh, Bộ đội địa phương tỉnh Sóc Trăng (Quê: Vĩnh Châu, Sóc Trăng). Tuyên dương 05/9/1970.",
+            "22. Nông Văn Nghi, Trung úy, Trợ lý công binh tỉnh đội Lạng Sơn (Quê: Tràng Định, Lạng Sơn). Tuyên dương 25/8/1970.",
+            "23. Nguyễn Văn Thân, Thượng sĩ, Tiểu đội trưởng công binh, Bộ tư lệnh 559 (Quê: Quế Võ, Hà Bắc). Tuyên dương 25/8/1970.",
+            "24. Ma Văn Viên, Thượng sĩ, Tiểu đội trưởng Trung đoàn 289, Bộ tư lệnh Công binh (Quê: Định Hoá, Bắc Thái). Tuyên dương 25/8/1970.",
+            "25. Nguyễn Văn Thoát, Thượng sĩ, Tiểu đội trưởng công binh, Bộ tư lệnh 559 (Quê: Bạch Thông, Bắc Thái). Tuyên dương 25/8/1970.",
+            "26. Nguyễn Ngọc Sâm, Trung sĩ, Tiểu đội trưởng, Bộ tư lệnh Công binh (Quê: Văn Giang, Hải Hưng). Tuyên dương 25/8/1970.",
+            "27. Hoàng Hữu Thanh, Chuẩn úy, Đại đội phó công binh, Bộ tư lệnh 559 (Quê: Đô Lương, Nghệ Tĩnh). Tuyên dương 01/10/1971.",
+            "28. Trịnh Tố Tâm, Đại đội trưởng công binh Đoàn 4, Quân khu Trị - Thiên (Quê: Ứng Hoà, Hà Sơn Bình). Tuyên dương 20/9/1971.",
+            "29. Lê Hữu Hãnh, Trung sĩ, Tiểu đội trưởng Đội 93, Bộ tư lệnh Công binh (Quê: Vĩnh Lộc, Thanh Hoá). Tuyên dương 01/10/1971.",
+            "30. Hồ Thị Cảnh, Công nhân quốc phòng, Trung đoàn 217, Bộ tư lệnh Công binh (Quê: Quỳnh Lưu, Nghệ Tĩnh). Tuyên dương 01/10/1971.",
+            "31. Cao Văn Hậu, Tiểu đội trưởng, Trung đoàn 229, Bộ tư lệnh Công binh (Quê: Anh Sơn, Nghệ Tĩnh). Tuyên dương 23/9/1973.",
+            "32. Nguyễn Bá Tòng, Thiếu úy, Chính trị viên phó đại đội công binh, Bộ Tư lệnh 559 (Quê: Hữu Lũng, Lạng Sơn). Tuyên dương 11/01/1973.",
+            "33. Hoàng Quang Tính, Thiếu úy, Đại đội phó công binh, Bộ tư lệnh 559 (Quê: Lục Ngạn, Hà Bắc). Tuyên dương 31/12/1973.",
+            "34. Phạm Văn Cờ, Đại đội phó, Trung đoàn công binh 98, Bộ tư lệnh 559 (Quê: Gia Lộc, Hải Hưng). Tuyên dương 31/12/1973.",
+            "35. Nguyễn Việt Hồng, Trung sĩ, Tiểu đội trưởng, d27 công binh, Bộ tư lệnh 559 (Quê: Thạch Hà, Nghệ Tĩnh). Tuyên dương 31/12/1973.",
+            "36. Lê Công Tiến, Thiếu úy Đại đội trưởng Đại đội 2, Tiểu đoàn 17, Sư đoàn 390 (Quê: Yên Phong, Bắc Ninh). Tuyên dương 15/01/1976.",
+            "37. Liệt sĩ Ngô Xuân Thu, Trung đội phó công binh, Bộ đội địa phương Quảng Đà (Quê: Kim Bảng, Hà Nam Ninh). Tuyên dương 15/01/1976.",
+            "38. Nguyễn Văn Tư, Trung úy Trợ lý Công binh tỉnh Kiên Giang (Quê: Châu Thành, Cần Thơ). Tuyên dương 15/01/1976.",
+            "39. Lê Huy Hoàng, Trung đội trưởng công binh Tổng cục Hậu cần (Quê: Nông Cống, Thanh hoá). Tuyên dương 15/01/1976.",
+            "40. Lương Văn Biêng, Tiểu đội trưởng công binh, Trung đoàn 33, Quân khu 7 (Quê: Quân Hoá, Thanh Hoá). Tuyên dương 15/01/1976.",
+            "41. Nguyễn Văn Tửu, Thiếu tá, Trung đoàn phó Trung đoàn 14, Bộ tư lệnh 559 (Quê: Nam Ninh, Hà Nam Ninh). Tuyên dương 3/6/1976.",
+            "42. Liệt sĩ Nguyễn Thị Nhạ, Thượng sĩ Trung đội trưởng công binh, Trung đoàn 14 (Quê: Thanh Liêm, Hà Nam Ninh). Tuyên dương 6/11/1978.",
+            "43. Trần Kim Xuân, Thượng úy Đội phá bom 93, Bộ tư lệnh Công binh (Quê: Lập Thạch, Vĩnh Phú). Tuyên dương 6/11/1978.",
+            "44. Nguyễn Xuân Hinh, Trung úy, CTV phó tiểu đoàn, Lữ đoàn 239 (Quê: Hậu Lộc, Thanh Hoá). Tuyên dương 6/11/1978.",
+            "45. Liệt sĩ Trần Văn Nuôi, Đại đội phó, Tiểu đoàn 525, Quân khu 7 (Quê: Cầu Ngang, Cửu Long). Tuyên dương 6/11/1978.",
+            "46. Liệt sĩ Đoàn Bường, Thiếu úy, Trợ lý công binh huyện Thăng Bình (Quê: Thăng Bình, Quảng Nam). Tuyên dương 6/11/1978.",
+            "47. Võ Thị Huy (tức Tín), Trung đội trưởng công binh tỉnh Nghĩa Bình (Quê: Hoài Nhơn, Nghĩa Bình). Tuyên dương 6/11/1978.",
+            "48. Lê Duy Chín, Đại úy, Tiểu đoàn trưởng công binh tỉnh Đồng Nai (Quê: Nghi Xuân, Nghệ Tĩnh). Tuyên dương 6/11/1978.",
+            "49. Mai Văn Ánh, Thượng úy, Đại đội trưởng công binh tỉnh Bến Tre (Quê: Châu Thành, Bến Tre). Tuyên dương 6/11/1978.",
+            "50. Ngô Quang Điền, Trung úy, Chính trị viên Đại đội 10, Tiểu đoàn 739, Quân khu 7 (Quê: Nam Ninh, Hà Nam Ninh). Tuyên dương 6/11/1978.",
+            "51. Đặng Công Nhân, Trung úy, Chính trị viên Đại đội công binh 512 Kiên Giang (Quê: Vĩnh Thuận, Kiên Giang). Tuyên dương 6/11/1978.",
+            "52. Lê Văn Trung, Chuẩn úy, Trạm trưởng trạm sửa chữa, Trung đoàn 289 (Quê: Thiệu Yên, Thanh Hoá). Tuyên dương 6/11/1978.",
+            "53. Hà Hồng Hồ, Thượng sĩ, Trung đội trưởng công binh tỉnh An Giang (Quê: Thanh Bình, Đồng Tháp). Tuyên dương 6/11/1978.",
+            "54. Cầm Bá Trừng, Thượng sĩ, Đại đội phó công binh, Sư đoàn 472 (Quê: Thường Xuân, Thanh Hoá). Tuyên dương 6/11/1978.",
+            "55. Trần Văn Lâm, Thượng sĩ, Trung đội phó Trung đoàn công binh 83, Quân khu 5 (Quê: Nga Sơn, Thanh Hoá). Tuyên dương 6/11/1978.",
+            "56. Trần Ngọc Sơn, Binh nhất, Tiểu đội phó Đại đội 16, Trung đoàn 12, Sư đoàn 3 (Quê: Hai Bà Trưng, Hà Nội). Tuyên dương 20/12/1979.",
+            "57. Nguyễn Nho Bông, Thượng úy, Tiểu đoàn trưởng công binh, Quân đoàn 14 (Quê: Nông Cống, Thanh Hoá). Tuyên dương 20/12/1979.",
+            "58. Vũ Duy Vang, Thượng úy Tiểu đoàn công binh 278, Quân khu 7 (Quê: Đông Hưng, Thái Bình). Tuyên dương 20/12/1979.",
+            "59. Vũ Trọng Cường, Phó đại đội trưởng quân sự, Đại đội 2, Tiểu đoàn Công binh 25 (Quê: Nam Trực, Nam Định). Tuyên dương 20/12/1979.",
+            "60. Tòng Văn Kim, Trung sĩ, Tiểu đội trưởng công binh, công an vũ trang Lai Châu (Quê: Điện Biên, Lai Châu). Tuyên dương 20/12/1979.",
+            "61. Dương Đức Thùng, Chuẩn úy, Đại đội trưởng công binh, Lữ đoàn 550 (Quê: Trà Lĩnh, Cao Bằng). Tuyên dương 25/01/1983.",
+            "62. Nguyễn Quốc Thất, Thượng úy, Đại đội trưởng Đại đội 8, Trung đoàn 550 (Quê: Đô Lương, Nghệ An). Tuyên dương 29/4/1985.",
+            "63. Trương Thị Hoa, Tổ trưởng Công binh xã Châu Thành, Phụng Hiệp, Cần Thơ (Quê: Phụng Hiệp, Cần Thơ). Tuyên dương 20/12/1994.",
+            "64. Nguyễn Văn Lanh, Hạ sỹ, Tiểu đội trưởng xây dựng công trình tại đảo Gạc Ma (Quê: Lệ Thủy, Quảng Bình). Tuyên dương 13/12/1989.",
+            "65. Hoàng Đăng Vinh, nguyên cán bộ Binh chủng Công binh (Quê: Phù Cừ, Hưng Yên). Tuyên dương 10/8/2015.",
+            "66. Phan Đức Sử, nguyên cán bộ Lữ đoàn 229, Binh chủng Công binh (Quê: Ân Thi, Hưng Yên). Tuyên dương 10/8/2015.",
+            "67. Nguyễn Phú Xuyên Khung, nguyên cán bộ Lữ đoàn 229 (Quê: Long Biên, Hà Nội). Tuyên dương 9/10/2014.",
+            "68. Đỗ Vinh Thăng, nguyên cán bộ Lữ đoàn 249 (Quê: Phúc Yên, Vĩnh Phúc). Tuyên dương 9/10/2014.",
+            "69. Lê Minh Trung, Huyện đội phó Điện Bàn, Quảng Nam (Quê: Điện Bàn, Quảng Nam). Tuyên dương 12/9/1975.",
+            "70. Nguyễn Văn Bạch, Tiểu đội trưởng Đơn vị A83, Trung đoàn 151 (Quê: Vĩnh Yên, Vĩnh Phúc). Tuyên dương 23/2/2010.",
+            "71. Hồ Văn Ngà, Đội trưởng Đội Công binh huyện Châu Thành, Long An (Quê: Châu Thành, Long An). Tuyên dương 23/02/2010.",
+            "72. Đinh Quốc Phòng, Chiến sĩ Đại đội Công binh 19, tỉnh đội Quảng Nam (Quê: Xuân Trường, Nam Định). Tuyên dương 28/5/2010.",
+            "73. Ninh Xuân Trường, Tiểu đội trưởng, Trung đoàn 95, Sư đoàn 2 (Quê: Lạng Giang, Bắc Giang). Tuyên dương 27/4/2012.",
+            "74. Lại Ngọc Ngợi, Trung đội trưởng, Đại đội 19 Công binh, Tỉnh đội Quảng Nam (Quê: Hải Hậu, Nam Định). Tuyên dương 26/7/2012.",
+            "75. Nguyễn Hữu Tề, Chính trị viên Đại đội 19 Công binh, Tỉnh đội Quảng Nam (Quê: Ý Yên, Nam Định). Tuyên dương 6/12/2012.",
+            "76. Nguyễn Thành Chung, Trợ lý Công binh, Ban CHQS huyện Hải Hậu (Quê: Hải Hậu, Nam Định). Tuyên dương 9/10/2014.",
+            "77. Du Long Thành (Năm Thành), Giám đốc Công binh xưởng, Tỉnh đội Sóc Trăng (Quê: Giá Rai, Bạc Liêu). Tuyên dương 9/10/2014.",
+            "78. Đào Khắc Nhạn, Chính trị viên Đại đội Công binh F50, Tỉnh đội Phú Yên (Quê: Đông Hòa, Phú Yên). Tuyên dương 10/8/2015.",
+            "79. Võ Công Đích, Tiểu đội trưởng Đại đội Công binh, Tỉnh đội Quảng Nam (Quê: Quế Sơn, Quảng Nam). Tuyên dương 26/4/2018.",
+            "80. Nguyễn Văn Thậm, Tiểu đội trưởng Đại đội Công binh, Trung đoàn 1 (Quê: Bến Cát, Sông Bé). Tuyên dương 7/5/1956.",
         ];
 
         // =========================================
@@ -860,3 +671,280 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// =========================================
+// DATA SOURCES (Đã cập nhật nội dung mới)
+// =========================================
+const commandersData = [
+    { name: "Hoàng Đạo Thúy", time: "1948-1948", rank: "Đại tá (1958)", role: "Công chính Giao thông Cục trưởng", details: "Cục trưởng Cục Quân huấn, Cục trưởng Cục Thông tin liên lạc.", img: "binh-chung/chinhuy/hoang-dao-thuy.jpg" },
+    { name: "Lê Khắc", time: "1948-1951", rank: "Đại tá (1950)", role: "Công chính Giao thông Cục trưởng", details: "Bộ trưởng Bộ Ngoại Thương (1980-1986).", img: "binh-chung/chinhuy/le-khac.jpg" },
+    { name: "Trần Đình Xu", time: "1956-1961", life: "(1921-1969)", rank: "Đại tá (1961)", role: "Công chính Giao thông Cục trưởng", details: "Tư lệnh Quân khu Sài Gòn-Gia Định.", img: "binh-chung/chinhuy/tran-dinh-xu.jpg" },
+    { name: "Phạm Hoàng", time: "1965-1970", rank: "---", role: "Cục trưởng Cục Công binh", details: "Nguyên Tư lệnh Binh chủng Công binh.", img: "binh-chung/chinhuy/pham-hoang.jpg" },
+    { name: "Trần Bá Đăng", time: "1970-1987", rank: "---", role: "Nguyên Tư lệnh Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/tran-ba-dang.jpg" },
+    { name: "Vũ Trọng Hà", time: "1987-1989", rank: "Thiếu tướng", role: "Nguyên Tư lệnh Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/vu-trong-ha.jpg" },
+    { name: "Nguyễn Hữu Yên", time: "1989-1995", rank: "Thiếu tướng (1990)", role: "Nguyên Tư lệnh Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/nguyen-huu-yen.jpg" },
+    { name: "Đặng Văn Phúc", time: "1995-2000", rank: "Đại tá", role: "Nguyên Tư lệnh Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/dang-van-phuc.jpg" },
+    { name: "Trương Quang Khánh", time: "2000-2004", rank: "Thượng tướng (2011)", role: "Nguyên Tư lệnh Binh chủng Công binh", details: "Thứ trưởng Bộ Quốc phòng (2009-2016).", img: "binh-chung/chinhuy/truong-quang-khanh.jpg" },
+    { name: "Hoàng Kiền", time: "2004-2007", rank: "Thiếu tướng (2006)", role: "Nguyên Tư lệnh Binh chủng Công binh", details: "Trưởng Ban Quản lý Dự án 47, BTTM (2007-2014).", img: "binh-chung/chinhuy/hoang-kien.jpg" },
+    { name: "Dương Đức Hòa", time: "2007-2010", rank: "Thiếu tướng (2007)", role: "Nguyên Tư lệnh Binh chủng Công binh", details: "Tư lệnh Quân khu 2 (2011-2016).", img: "binh-chung/chinhuy/duong-duc-hoa.jpg" },
+    { name: "Phạm Quang Xuân", time: "2010-2014", rank: "Trung tướng (2015)", role: "Nguyên Tư lệnh Binh chủng Công binh", details: "Phó Giám đốc Học viện Quốc phòng (2014-2016).", img: "binh-chung/chinhuy/pham-quang-xuan.jpg" },
+    { name: "Trần Hồng Minh", time: "2014-2016", rank: "Trung tướng (2018)", role: "Nguyên Tư lệnh Binh chủng Công binh", details: "Bộ trưởng Bộ Xây dựng (2025-nay).", img: "binh-chung/chinhuy/tran-hong-minh.jpg" },
+    { name: "Phùng Ngọc Sơn", time: "2016-6/2020", rank: "Thiếu tướng (2016)", role: "Nguyên Tư lệnh Binh chủng Công binh", details: "Phó chủ nhiệm kiêm TMT Tổng cục Kỹ thuật.", img: "binh-chung/chinhuy/phung-ngoc-son.jpg" },
+    { name: "Trần Trung Hòa", time: "6/2020-nay", rank: "Thiếu tướng", role: "Tư lệnh Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/tran-trung-hoa.jpg" }
+];
+
+const commissarsData = [
+    { name: "Đặng Quốc Bảo", time: "1962-1965", rank: "Thiếu tướng (1974)", role: "Nguyên Chính ủy Binh chủng Công binh", details: "Chánh VP TCCT, Trưởng ban Khoa giáo TW.", img: "binh-chung/chinhuy/dang-quoc-bao.jpg" },
+    { name: "Chu Thanh Hương", time: "1965-1974", rank: "Thiếu tướng", role: "Nguyên Chính ủy Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/chu-thanh-huong.jpg" },
+    { name: "Trần Thế Môn", time: "1974-1977", rank: "Thiếu tướng (1974)", role: "Nguyên Chính ủy Binh chủng Công binh", details: "Chánh án Tòa án Quân sự TW.", img: "binh-chung/chinhuy/tran-the-mon.jpg" },
+    { name: "Nguyễn Huân", time: "1977-1982", rank: "Trung tướng", role: "Nguyên Chính ủy Binh chủng Công binh", details: "Chánh án Tòa án Quân sự TW.", img: "binh-chung/chinhuy/nguyen-huan.jpg" },
+    { name: "Nguyễn Đình Ích", time: "1982-1983", rank: "Thiếu tướng", role: "Nguyên Chính ủy Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/nguyen-dinh-ich.jpg" },
+    { name: "Trần Bình", time: "1983-1995", rank: "Thiếu tướng", role: "Nguyên Chính ủy Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/tran-binh.jpg" },
+    { name: "Hoàng Khánh Hưng", time: "1995-2002", rank: "Trung tướng (2008)", role: "Nguyên Chính ủy Binh chủng Công binh", details: "Chính ủy Học viện Kỹ thuật Quân sự.", img: "binh-chung/chinhuy/hoang-khanh-hung.jpg" },
+    { name: "Mai Ngọc Linh", time: "2002-2007", rank: "Thiếu tướng (2004)", role: "Nguyên Chính ủy Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/mai-ngoc-linh.jpg" },
+    { name: "Hoàng Sĩ Nam", time: "2007-2013", rank: "Thiếu tướng (2008)", role: "Nguyên Chính ủy Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/hoang-si-nam.jpg" },
+    { name: "Trần Xuân Mạnh", time: "2013-2017", rank: "Thiếu tướng (2013)", role: "Nguyên Chính ủy Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/tran-xuan-manh.jpg" },
+    { name: "Lê Xuân Cát", time: "2017-6/2022", rank: "Thiếu tướng (12/2017)", role: "Nguyên Chính ủy Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/le-xuan-cat.jpg" },
+    { name: "Đinh Ngọc Tường", time: "6/2022-nay", rank: "Thiếu tướng (11/2022)", role: "Chính ủy Binh chủng Công binh", details: "", img: "binh-chung/chinhuy/dinh-ngoc-tuong.jpg" }
+];
+
+// =========================================
+// LOGIC CLASS: LeaderCarousel (Scroll Snap)
+// =========================================
+
+class LeaderCarousel {
+    constructor(containerId, data) {
+        this.container = document.getElementById(containerId);
+        this.data = data;
+        this.currentIndex = 0;
+        this.isScrolling = false;
+
+        // Configuration for Widths (MUST MATCH CSS)
+        this.updateDimensions();
+        this.init();
+    }
+
+    updateDimensions() {
+        this.isMobile = window.innerWidth <= 768;
+        this.cardWidth = this.isMobile ? 280 : 350;
+        this.gap = this.isMobile ? 20 : 40;
+        // The total space one item takes up
+        this.stride = this.cardWidth + this.gap;
+    }
+
+    init() {
+        if (!this.container) return; // Safety check
+
+        // 1. Render Cards
+        this.data.forEach((item, index) => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'leader-card-item';
+            wrapper.dataset.index = index;
+
+            // Inner HTML (Template)
+            wrapper.innerHTML = `
+                <div class="slide-card-tu-lenh">
+                    <div class="slide-number">${index + 1}</div>
+                    <img src="${item.img}" alt="${item.name}" class="slide-image-tu-lenh" loading="lazy">
+                    <div class="slide-content-tu-lenh">
+                        <h3 class="slide-name-tu-lenh">${item.name}</h3>
+                        <div class="info-row">
+                            <span class="info-label">Thời gian:</span>
+                            <span class="info-value">${item.time}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Cấp bậc:</span>
+                            <span class="info-value"><span class="rank-badge">${item.rank || 'N/A'}</span></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Chức vụ:</span>
+                            <span class="info-value">${item.role}</span>
+                        </div>
+                        ${item.details ? `
+                        <div class="info-row" style="border:none; padding-top:10px;">
+                            <span class="info-label">Chức vụ cuối cùng:</span>
+                            <span class="info-value" style="font-size:0.85rem; font-style:italic;">${item.details}</span>
+                        </div>` : ''}
+                    </div>
+                </div>
+            `;
+
+            // CLICK TO NAVIGATE (Center logic)
+            wrapper.addEventListener('click', () => {
+                this.scrollToIndex(index);
+            });
+
+            this.container.appendChild(wrapper);
+        });
+
+        // 2. Set Initial State
+        this.scrollToIndex(0);
+
+        // 3. Add Wheel Listener (Scroll Jacking - Desktop)
+        this.container.addEventListener('wheel', (evt) => {
+            // Check for vertical scroll on desktop
+            if (!this.isMobile && Math.abs(evt.deltaY) > Math.abs(evt.deltaX)) {
+                evt.preventDefault();
+                
+                // Debounce/Throttle the scroll
+                if (this.isScrolling) return;
+                this.isScrolling = true;
+
+                if (evt.deltaY > 0) {
+                    // Scroll Right (Next)
+                    this.scrollToIndex(Math.min(this.currentIndex + 1, this.data.length - 1));
+                } else {
+                    // Scroll Left (Prev)
+                    this.scrollToIndex(Math.max(this.currentIndex - 1, 0));
+                }
+
+                // Unlock scroll after animation duration
+                setTimeout(() => { this.isScrolling = false; }, 400);
+            }
+        }, { passive: false });
+
+        // 4. Handle Resize
+        window.addEventListener('resize', () => {
+           this.updateDimensions();
+           this.scrollToIndex(this.currentIndex);
+        });
+        
+        // 5. Native Scroll Listener (For Touch/Swipe update active state)
+        this.container.addEventListener('scroll', () => {
+             clearTimeout(this.scrollTimeout);
+             this.scrollTimeout = setTimeout(() => {
+                 const centerPosition = this.container.scrollLeft;
+                 // Calculate which index is closest to center
+                 // We use Math.round to find the nearest snap point
+                 const newIndex = Math.round(centerPosition / this.stride);
+                 
+                 if (newIndex !== this.currentIndex && newIndex >= 0 && newIndex < this.data.length) {
+                     this.currentIndex = newIndex;
+                     this.updateActiveClasses();
+                 }
+             }, 50);
+        });
+    }
+
+    scrollToIndex(index) {
+        this.currentIndex = index;
+        const position = index * this.stride;
+        
+        this.container.scrollTo({
+            left: position,
+            behavior: 'smooth'
+        });
+        
+        this.updateActiveClasses();
+    }
+
+    updateActiveClasses() {
+        const items = this.container.querySelectorAll('.leader-card-item');
+        items.forEach((item, idx) => {
+            if (idx === this.currentIndex) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    }
+}
+
+// INITIALIZE ON LOAD
+document.addEventListener('DOMContentLoaded', () => {
+    new LeaderCarousel('container-tulenh', commandersData);
+    new LeaderCarousel('container-chinhuy', commissarsData);
+});
+
+// Biến toàn cục lưu danh sách ảnh và vị trí hiện tại
+let slideshowData = [];
+let currentSlideIndex = 0;
+
+// Hàm khởi tạo dữ liệu (Chạy 1 lần khi bấm nút)
+function initSlideshowData() {
+    slideshowData = []; // Reset dữ liệu
+    
+    // 1. Tìm tất cả các sự kiện con trong Timeline
+    const items = document.querySelectorAll('.sub-event-item');
+    
+    // 2. Duyệt qua từng sự kiện để lấy thông tin
+    items.forEach(item => {
+        const imgEl = item.querySelector('.event-img');
+        
+        // Chỉ lấy những sự kiện CÓ ẢNH
+        if (imgEl) {
+            const dateEl = item.querySelector('.sub-date');
+            const titleEl = item.querySelector('.sub-title');
+            const descEl = item.querySelector('.sub-text');
+            
+            // Đẩy vào mảng dữ liệu
+            slideshowData.push({
+                src: imgEl.src, // Lấy đường dẫn ảnh thực tế trong thẻ img
+                date: dateEl ? dateEl.innerText : '',
+                title: titleEl ? titleEl.innerText : '',
+                desc: descEl ? descEl.innerText : ''
+            });
+        }
+    });
+}
+
+// Hàm BẮT ĐẦU trình chiếu
+function startSlideshow() {
+    // Luôn cập nhật dữ liệu mới nhất từ HTML
+    initSlideshowData();
+    
+    if (slideshowData.length === 0) {
+        alert("Chưa có ảnh nào trong Timeline để trình chiếu!");
+        return;
+    }
+    
+    // Mở Modal
+    document.getElementById('slideshowModal').classList.add('active');
+    
+    // Bắt đầu từ ảnh đầu tiên (hoặc logic khác tùy ý)
+    currentSlideIndex = 0; 
+    renderSlide();
+    
+    // Thêm sự kiện bàn phím
+    document.addEventListener('keydown', handleKeyInput);
+}
+
+// Hàm ĐÓNG trình chiếu
+function closeSlideshow() {
+    document.getElementById('slideshowModal').classList.remove('active');
+    document.removeEventListener('keydown', handleKeyInput);
+}
+
+// Hàm HIỂN THỊ slide dựa trên currentSlideIndex
+function renderSlide() {
+    const data = slideshowData[currentSlideIndex];
+    
+    // Gán dữ liệu vào các thẻ HTML trong Modal
+    document.getElementById('slideImg').src = data.src;
+    document.getElementById('slideDate').innerText = data.date;
+    document.getElementById('slideTitle').innerText = data.title;
+    document.getElementById('slideDesc').innerText = data.desc;
+    document.getElementById('slideCounter').innerText = 
+        `Ảnh ${currentSlideIndex + 1} / ${slideshowData.length}`;
+}
+
+// Hàm CHUYỂN slide (Next/Prev)
+function changeSlide(step) {
+    currentSlideIndex += step;
+    
+    // Logic vòng lặp (về đầu hoặc về cuối)
+    if (currentSlideIndex >= slideshowData.length) {
+        currentSlideIndex = 0;
+    } else if (currentSlideIndex < 0) {
+        currentSlideIndex = slideshowData.length - 1;
+    }
+    
+    renderSlide();
+}
+
+// Xử lý phím tắt (Mũi tên & ESC)
+function handleKeyInput(e) {
+    if (e.key === 'ArrowRight') changeSlide(1);
+    if (e.key === 'ArrowLeft') changeSlide(-1);
+    if (e.key === 'Escape') closeSlideshow();
+}
