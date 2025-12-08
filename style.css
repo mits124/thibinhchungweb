@@ -837,6 +837,56 @@ main {
         font-size: 13px;
     }
 }
+/* --- Nút Xem toàn bộ ảnh dưới Timeline --- */
+.timeline-footer-action {
+    text-align: center;
+    margin-top: 40px; /* Khoảng cách với timeline phía trên */
+    padding-bottom: 20px;
+}
+
+.view-all-photos-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 35px;
+    background-color: var(--white);
+    color: var(--red-color);
+    border: 2px solid var(--red-color);
+    border-radius: 50px; /* Bo tròn hình con nhộng */
+    font-family: var(--font-secondary); /* Dùng font Be Vietnam Pro */
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(140, 16, 7, 0.15);
+}
+
+.view-all-photos-btn:hover {
+    background-color: var(--red-color);
+    color: var(--white);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(140, 16, 7, 0.3);
+}
+
+.view-all-photos-btn .arrow-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.view-all-photos-btn:hover .arrow-icon {
+    transform: translateX(5px); /* Hiệu ứng mũi tên dịch chuyển khi hover */
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+    .view-all-photos-btn {
+        width: 80%; /* Nút rộng hơn trên điện thoại */
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
 
 /* =========================================
    6. CHINH-UY SECTION
