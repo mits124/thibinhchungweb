@@ -2574,18 +2574,7 @@ body {
             display:none;
         }
         /* Responsive */
-        @media (max-width: 1024px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
 
-            .footer-image {
-                height: 300px;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-        }
 
         @media (max-width: 768px) {
             .footer {
@@ -2611,7 +2600,11 @@ body {
 
             .footer-image {
                 height: 150px;
-                width: auto;
+                width: 50%;
+                padding-right: 20px;
+            }
+            .footer-image img {
+                object-fit: contain;
             }
             .chuthic {
                 display: flex;
